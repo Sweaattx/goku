@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piero Valdez | Ingeniería de Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+</head>
+<body>
+    <!-- Pantalla de carga -->
+    <div class="loader">
+        <div class="loader__content">
+            <h1 class="loader__title">Piero Valdez</h1>
+            <div class="loader__progress">
+                <div class="loader__bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <header class="navbar">
+        <nav class="navbar__container container">
+            <a href="#inicio" class="navbar__logo">Piero Valdez</a>
+            <div class="navbar__menu">
+                <a href="#inicio" class="navbar__link active">Inicio</a>
+                <a href="#sobre-mi" class="navbar__link">Sobre Mí</a>
+                <a href="#certificados" class="navbar__link">Certificados</a>
+                <a href="#proyectos" class="navbar__link">Proyectos</a>
+                <a href="#contacto" class="navbar__link">Contacto</a>
+            </div>
+            <div class="navbar__toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero__content">
+                <h1 class="hero__title">Ingeniero de Software</h1>
+                <p class="hero__subtitle">Desarrollando soluciones innovadoras con pasión y dedicación</p>
+                <div class="hero__scroll-indicator">
+                    <span>Scroll</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre-mi" class="about">
+            <div class="container">
+                <h2 class="section-title">Sobre Mí</h2>
+                <div class="about__content">
+                    <div class="about__image">
+                        <img src="img/profile.jpg" alt="Piero Valdez" class="about__img">
+                    </div>
+                    <div class="about__info">
+                        <div class="about__text">
+                            <p>Soy un estudiante proactivo de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas (UPC), actualmente cursando mi segundo año. Mi trayectoria combina una sólida base académica con la adquisición continua de conocimientos a través de certificaciones en tecnologías y metodologías clave del desarrollo de software. Busco activamente oportunidades para aplicar y expandir mis habilidades en entornos profesionales.</p>
+                        </div>
+                        <div class="about__stats">
+                            <div class="stat">
+                                <span class="stat__number">2</span>
+                                <span class="stat__label">Años de Estudio</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat__number">25+</span>
+                                <span class="stat__label">Certificados</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat__number">10+</span>
+                                <span class="stat__label">Tecnologías</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificados" class="certificates">
+            <div class="container">
+                <h2 class="section-title">Certificados Profesionales</h2>
+                <div class="certificates__grid">
+                    <div class="certificate__category">
+                        <h3 class="certificate__title">Desarrollo Web</h3>
+                        <div class="certificate__items">
+                            <div class="certificate__item">
+                                <i class="fab fa-react certificate__icon"></i>
+                                <span class="certificate__name">React Profesional</span>
+                            </div>
+                            <div class="certificate__item">
+                                <i class="fab fa-node-js certificate__icon"></i>
+                                <span class="certificate__name">Node.js Profesional</span>
+                            </div>
+                            <div class="certificate__item">
+                                <i class="fab fa-php certificate__icon"></i>
+                                <span class="certificate__name">PHP 8</span>
+                            </div>
+                            <div class="certificate__item">
+                                <i class="fab fa-laravel certificate__icon"></i>
+                                <span class="certificate__name">Laravel Profesional</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="certificate__category">
+                        <h3 class="certificate__title">Lenguajes de Programación</h3>
+                        <div class="certificate__items">
+                            <div class="certificate__item">
+                                <i class="fab fa-python certificate__icon"></i>
+                                <span class="certificate__name">Python Profesional</span>
+                            </div>
+                            <div class="certificate__item">
+                                <i class="fab fa-java certificate__icon"></i>
+                                <span class="certificate__name">Spring Framework</span>
+                            </div>
+                            <div class="certificate__item">
+                                <i class="fas fa-code certificate__icon"></i>
+                                <span class="certificate__name">C++ Profesional</span>
+                            </div>
+                            <div class="certificate__item">
+                                <i class="fab fa-js certificate__icon"></i>
+                                <span class="certificate__name">JavaScript Profesional</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="certificate__category">
+                        <h3 class="certificate__title">DevOps & Herramientas</h3>
+                        <div class="certificate__items">
+                            <div class="certificate__item">
+                                <i class="fab fa-docker certificate__icon"></i>
+                                <span class="certificate__name">Docker Profesional</span>
+                            </div>
+                            <div class="certificate__item">
+                                <i class="fab fa-git-alt certificate__icon"></i>
+                                <span class="certificate__name">Git Profesional</span>
+                            </div>
+                            <div class="certificate__item">
+                                <i class="fas fa-database certificate__icon"></i>
+                                <span class="certificate__name">ETL con Python</span>
+                            </div>
+                            <div class="certificate__item">
+                                <i class="fas fa-code-branch certificate__icon"></i>
+                                <span class="certificate__name">Airflow</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyectos" class="projects">
+            <div class="container">
+                <h2 class="section-title">Proyectos Destacados</h2>
+                <div class="projects__grid">
+                    <article class="project__card">
+                        <img src="img/Sistemadegestion.jpg" alt="Proyecto Sistema de Gestión Optimizado" class="project__image">
+                        <div class="project__content">
+                            <h3 class="project__title">Sistema de Gestión Empresarial</h3>
+                            <p class="project__description">
+                                Desarrollo de una plataforma integral para la gestión de recursos y procesos internos, 
+                                aplicando arquitectura de microservicios y metodologías ágiles. Enfocado en escalabilidad y eficiencia.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">Java</span>
+                                <span class="project__tag">Spring Boot</span>
+                                <span class="project__tag">Microservicios</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project__card">
+                        <img src="img/aplicacionweb.jpg" alt="Proyecto Aplicación Web Interactivo" class="project__image">
+                        <div class="project__content">
+                            <h3 class="project__title">Aplicación Web Interactiva</h3>
+                            <p class="project__description">
+                                Plataforma web dinámica con interfaz de usuario moderna, 
+                                optimizada para la experiencia del usuario y desarrollada con enfoque en rendimiento y mantenibilidad.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">React</span>
+                                <span class="project__tag">Node.js</span>
+                                <span class="project__tag">MongoDB</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto 3: Sistema de Recomendación -->
+                    <article class="project__card">
+                        <img src="img/sistemaderecomendacion.jpg" alt="Proyecto Sistema de Recomendación" class="project__image">
+                        <div class="project__content">
+                            <h3 class="project__title">Sistema de Recomendación</h3>
+                            <p class="project__description">
+                                Implementación de un sistema de recomendación basado en filtrado colaborativo, 
+                                procesando y analizando datos para ofrecer sugerencias personalizadas a los usuarios.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">Python</span>
+                                <span class="project__tag">ETL</span>
+                                <span class="project__tag">Machine Learning Básico</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto 4: API RESTful -->
+                    <article class="project__card">
+                        <img src="img/desarrollodeapi.jpg" alt="Proyecto API RESTful" class="project__image">
+                        <div class="project__content">
+                            <h3 class="project__title">API RESTful</h3>
+                            <p class="project__description">
+                                Diseño e implementación de una API RESTful robusta y segura, 
+                                con enfoque en buenas prácticas y seguridad.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">Node.js</span>
+                                <span class="project__tag">Express</span>
+                                <span class="project__tag">JWT</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto 5: Implementación CI/CD -->
+                    <article class="project__card">
+                        <img src="img/pipelinecdci.jpg" alt="Proyecto CI/CD" class="project__image">
+                        <div class="project__content">
+                            <h3 class="project__title">Pipeline CI/CD</h3>
+                            <p class="project__description">
+                                Implementación de un pipeline de Integración y Entrega Continua, 
+                                automatizando procesos de desarrollo y despliegue.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">Git</span>
+                                <span class="project__tag">Docker</span>
+                                <span class="project__tag">Jenkins</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto 6: Proyecto en C++ -->
+                    <article class="project__card">
+                        <img src="img/algoritmos.jpg" alt="Proyecto Algoritmos C++" class="project__image">
+                        <div class="project__content">
+                            <h3 class="project__title">Implementación de Algoritmos en C++</h3>
+                            <p class="project__description">
+                                Desarrollo de soluciones eficientes para problemas algorítmicos, 
+                                enfocándose en optimización de tiempo y espacio, utilizando características avanzadas del lenguaje C++.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">C++</span>
+                                <span class="project__tag">Algoritmos</span>
+                                <span class="project__tag">Estructuras de Datos</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact">
+            <div class="container">
+                <h2 class="section-title">Contacto</h2>
+                <div class="contact__content">
+                    <div class="contact__info">
+                        <h3 class="contact__title">Información de Contacto</h3>
+                        <p class="contact__text">
+                            Estoy disponible para oportunidades profesionales y colaboraciones. 
+                            No dudes en contactarme a través de cualquiera de los siguientes medios.
+                        </p>
+                        <div class="contact__details">
+                            <div class="contact__item">
+                                <i class="fas fa-envelope"></i>
+                                <span>pierovalddz@gmail.com</span>
+                            </div>
+                            <div class="contact__item">
+                                <i class="fas fa-phone"></i>
+                                <span>+51 985 896 272</span>
+                            </div>
+                            <div class="contact__item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Lima, Perú</span>
+                            </div>
+                        </div>
+                        <div class="contact__social">
+                            <a href="https://github.com/Sweaattx" class="contact__social-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="linkedin.com/in/tu-perfil" class="contact__social-link" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <form class="contact__form" id="contactForm">
+                        <div class="form__group">
+                            <label for="name" class="form__label">Nombre</label>
+                            <input type="text" id="name" name="name" class="form__input" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="email" class="form__label">Email</label>
+                            <input type="email" id="email" name="_replyto" class="form__input" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="message" class="form__label">Mensaje</label>
+                            <textarea id="message" name="message" class="form__textarea" required></textarea>
+                        </div>
+                        <button type="submit" class="form__button">Enviar Mensaje</button>
+                        <div id="formMessage" class="form__message"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__text">© 2024 Piero Valdez. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Control de la pantalla de carga
+        window.addEventListener('load', () => {
+            const loader = document.querySelector('.loader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1500);
+        });
+
+        // Menú fijo y scroll
+        const header = document.querySelector('.navbar');
+        const navLinks = document.querySelectorAll('.navbar__link');
+        const navToggle = document.querySelector('.navbar__toggle');
+        const navMenu = document.querySelector('.navbar__menu');
+
+        // Cambiar header al hacer scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Menú móvil
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer click en un enlace
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Activar enlace actual
+        const sections = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animación de escritura para el subtítulo
+        const subtitleElement = document.querySelector('.hero__subtitle');
+        // Asegurarse de que el elemento subtítulo exista antes de intentar animar
+        if (subtitleElement) {
+            const phrases = [
+                "Desarrollando soluciones innovadoras con pasión y dedicación",
+                "Creando experiencias web únicas y funcionales",
+                "Apasionado por la tecnología y el aprendizaje constante",
+                "Convirtiendo ideas en código eficiente y elegante"
+            ];
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            // Función principal de escritura/borrado
+            function type() {
+                const currentPhrase = phrases[phraseIndex];
+                
+                const displayedText = currentPhrase.substring(0, charIndex);
+                subtitleElement.textContent = displayedText;
+                
+                // Ajustar velocidades para una animación más fluida
+                let typingSpeed = isDeleting ? 20 : 50; // Reducir los tiempos
+                const delayAfterTypingComplete = 1000; // Reducir el tiempo de pausa
+
+                if (!isDeleting && charIndex < currentPhrase.length) {
+                    charIndex++;
+                    setTimeout(type, typingSpeed);
+                } else if (isDeleting && charIndex > 0) {
+                    charIndex--;
+                    setTimeout(type, typingSpeed);
+                } else {
+                    isDeleting = !isDeleting;
+                    
+                    if (!isDeleting) {
+                        phraseIndex = (phraseIndex + 1) % phrases.length;
+                        charIndex = 0;
+                        setTimeout(type, 30); // Reducir el tiempo entre frases
+                    } else {
+                        setTimeout(type, delayAfterTypingComplete);
+                    }
+                }
+            }
+
+            // Función para iniciar la animación de escritura
+            function startTypingAnimation() {
+                // Asegurar que el elemento sea visible
+                subtitleElement.style.opacity = 1;
+                subtitleElement.style.transform = 'translateY(0)';
+                // Remover cualquier animación CSS inicial para evitar conflictos
+                subtitleElement.style.animation = 'none'; 
+                
+                // Limpiar cualquier texto inicial y empezar a escribir
+                subtitleElement.textContent = '';
+                
+                // Asegurar que el cursor sea visible al inicio
+                 subtitleElement.classList.remove('finished-typing');
+
+                // El cursor es manejado por CSS ::after
+                type(); // Iniciar el bucle de escritura
+            }
+
+            // Iniciar la animación después de que la página y los recursos estén cargados
+            window.addEventListener('load', () => {
+                 const loader = document.querySelector('.loader');
+                 // Esperar a que el loader se oculte y dar un pequeño margen
+                 setTimeout(() => {
+                     if (loader) { 
+                         loader.classList.add('hidden');
+                     }
+                     // Pequeño retraso antes de iniciar la escritura para asegurar que la sección esté lista
+                     setTimeout(() => {
+                         startTypingAnimation(); 
+                     }, 300); // Retraso menor
+                 }, 1500); // Este tiempo debe coincidir o ser ligeramente mayor que la animación del loader
+             });
+
+            // En caso de que la página ya haya cargado completamente antes que el script se ejecute
+            if (document.readyState === 'complete') {
+                 const loader = document.querySelector('.loader');
+                 if ((loader && loader.classList.contains('hidden')) || !loader) {
+                      // Si el loader está oculto o no existe, iniciar la animación después de un pequeño retraso
+                      setTimeout(() => {
+                          startTypingAnimation();
+                     }, 300); // Pequeño retraso
+                 }
+            }
+        }
+
+        // Manejo del formulario de contacto con Formspree (sin redirección)
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault(); // Previene el envío por defecto del formulario
+
+                const formData = new FormData(contactForm);
+                const response = await fetch('https://formspree.io/f/xkgbolgg', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Redirigir a la página de éxito personalizada
+                    window.location.href = 'success.html';
+                } else {
+                    formMessage.textContent = 'Ocurrió un error al enviar el mensaje. Por favor, inténtalo de nuevo.';
+                    formMessage.style.color = 'var(--color-error)'; // Define --color-error en tu CSS si no existe
+                }
+                // Si hay un error, mostrar el mensaje por un tiempo y luego ocultarlo
+                if (!response.ok) {
+                    setTimeout(() => {
+                        formMessage.textContent = '';
+                    }, 5000); // El mensaje de error desaparece después de 5 segundos
+                }
+            });
+        }
+
+        // Lógica del Chatbot
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatbotToggle = document.getElementById('chatbotToggle');
+            const chatbotClose = document.getElementById('chatbotClose');
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            const chatbotMessages = document.getElementById('chatbotMessages');
+            const chatbotInput = document.getElementById('chatbotInput');
+            const chatbotSend = document.getElementById('chatbotSend');
+
+            // Asegurarse de que los elementos existan antes de añadir event listeners
+            if (chatbotToggle && chatbotClose && chatbotWindow && chatbotMessages && chatbotInput && chatbotSend) {
+                // Abre/cierra la ventana del chatbot
+                chatbotToggle.addEventListener('click', () => {
+                    chatbotWindow.classList.toggle('open');
+                    // Ocultar el mensaje proactivo si el chatbot se abre
+                    hideProactiveAssistant();
+                });
+
+                chatbotClose.addEventListener('click', () => {
+                    chatbotWindow.classList.remove('open');
+                });
+
+                const GEMINI_API_KEY = 'AIzaSyAyk59-MIbTddJm7YqduAMLdGR7ocQFpL0';
+                const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
+
+                // Función para añadir un mensaje al chat
+                function addMessage(text, sender) {
+                    const messageElement = document.createElement('p');
+                    messageElement.classList.add('chatbot-message', sender);
+                    messageElement.textContent = text;
+                    chatbotMessages.appendChild(messageElement);
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight; // Auto-scroll al final
+                }
+
+                // Función para enviar mensaje a Gemini API
+                async function sendMessageToGemini(message) {
+                    addMessage(message, 'user');
+                    chatbotInput.value = ''; // Limpiar input
+
+                    try {
+                        const response = await fetch(GEMINI_API_URL, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                contents: [{
+                                    parts: [{ text: message }]
+                                }]
+                            })
+                        });
+
+                        const data = await response.json();
+
+                        if (response.ok && data.candidates && data.candidates.length > 0) {
+                            addMessage(data.candidates[0].content.parts[0].text, 'bot');
+                        } else {
+                            addMessage('Lo siento, no pude obtener una respuesta en este momento.', 'bot');
+                            console.error('Error de la API de Gemini:', data);
+                        }
+                    } catch (error) {
+                        addMessage('Ocurrió un error al comunicarse con el asistente.', 'bot');
+                        console.error('Error al enviar mensaje a Gemini:', error);
+                    }
+                }
+
+                // Event listener para el botón de enviar
+                chatbotSend.addEventListener('click', () => {
+                    const message = chatbotInput.value.trim();
+                    if (message) {
+                        sendMessageToGemini(message);
+                    }
+                });
+
+                // Event listener para la tecla Enter en el input
+                chatbotInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        const message = chatbotInput.value.trim();
+                        if (message) {
+                            sendMessageToGemini(message);
+                        }
+                    }
+                });
+            }
+        });
+
+        // Lógica del Mensaje de Asistencia Proactiva
+        document.addEventListener('DOMContentLoaded', () => {
+            const proactiveAssistant = document.getElementById('proactiveAssistant');
+            const proactiveMessage = document.getElementById('proactiveMessage');
+            
+            // Asegurarse de que los elementos existan
+            if (proactiveAssistant && proactiveMessage) {
+                let showTimeout; // Para el temporizador de mostrar
+                let hideTimeout; // Para el temporador de ocultar automáticamente
+                let repeatTimeout; // Para el temporador de repetición
+                let messageTimeout; // Para el temporador de cambio de mensaje
+
+                const initialDelay = 8000; // 8 segundos antes de mostrar por primera vez
+                const displayDuration = 15000; // 15 segundos que el mensaje permanece visible
+                const repeatDelay = 120000; // 2 minutos (120000 ms) antes de que pueda aparecer de nuevo
+                const messageChangeDelay = 5000; // 5 segundos antes de cambiar al segundo mensaje
+
+                function showProactiveAssistant() {
+                    proactiveAssistant.classList.add('show');
+                    proactiveMessage.textContent = '¿Necesitas ayuda?';
+                    proactiveMessage.classList.remove('explore', 'fade-out', 'fade-in');
+                    
+                    // Cambiar al segundo mensaje después de messageChangeDelay
+                    messageTimeout = setTimeout(() => {
+                        proactiveMessage.classList.add('fade-out');
+                        setTimeout(() => {
+                            proactiveMessage.textContent = 'Explora mi portafolio';
+                            proactiveMessage.classList.add('explore', 'fade-in');
+                            proactiveMessage.classList.remove('fade-out');
+                        }, 300);
+                    }, messageChangeDelay);
+
+                    // Ocultar automáticamente después de displayDuration
+                    hideTimeout = setTimeout(hideProactiveAssistant, displayDuration);
+                }
+
+                function hideProactiveAssistant() {
+                    proactiveAssistant.classList.remove('show');
+                    clearTimeout(hideTimeout);
+                    clearTimeout(messageTimeout);
+                    // Establecer un temporizador para que pueda volver a aparecer después de repeatDelay
+                    startRepeatTimer();
+                }
+
+                function startRepeatTimer() {
+                    clearTimeout(repeatTimeout);
+                    repeatTimeout = setTimeout(() => {
+                        showTimeout = setTimeout(showProactiveAssistant, 1000); // Pequeño retraso antes de mostrar después de la repetición
+                    }, repeatDelay);
+                }
+
+                // Función para ocultar el mensaje proactivo desde fuera (ej. cuando se abre el chatbot)
+                window.hideProactiveAssistant = () => {
+                    if (proactiveAssistant.classList.contains('show')) {
+                        hideProactiveAssistant();
+                        startRepeatTimer(); // Reiniciar el temporizador si se cierra por interacción del chatbot
+                    }
+                };
+
+                // Iniciar el temporador inicial al cargar la página
+                showTimeout = setTimeout(showProactiveAssistant, initialDelay);
+            }
+        });
+
+    </script>
+
+    <!-- Proactive Assistant Message -->
+    <div class="proactive-assistant" id="proactiveAssistant">
+        <i class="fas fa-robot"></i>
+        <span class="proactive-message" id="proactiveMessage">¿Necesitas ayuda?</span>
+    </div>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget">
+        <button class="chatbot-toggle" id="chatbotToggle">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <span>Asistente de IA</span>
+                <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <p class="chatbot-message bot">¡Hola! Soy el asistente de Piero. ¿En qué puedo ayudarte hoy?</p>
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" id="chatbotInput" placeholder="Escribe tu mensaje..." autocomplete="off">
+                <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
