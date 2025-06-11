@@ -3,13 +3,1058 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piero Valdez | Ingeniería de Software</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="Portafolio profesional de Piero Valdez - Ingeniero de Software">
+    <meta name="keywords" content="desarrollo web, software, programación, portafolio">
+    <meta name="author" content="Piero Valdez">
+    <meta name="robots" content="index, follow">
+    <title>Piero Valdez - Portafolio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+    
+    <!-- Precargar recursos críticos -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600&display=swap" as="style">
+    
+    <!-- Cargar estilos -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Variables para modo claro */
+            --color-primary: #000000;
+            --color-secondary: #333333;
+            --color-background: #ffffff;
+            --color-text: #000000;
+            --color-text-light: #6b7280;
+            --color-border: #e5e7eb;
+            --color-card: #ffffff;
+            --color-card-hover: #f3f4f6;
+            --color-input: #f9fafb;
+            --color-input-focus: #ffffff;
+            --color-error: #ef4444;
+            --color-success: #10b981;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --navbar-bg: #ffffff;
+            --navbar-text: #000000;
+            --navbar-hover: #333333;
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1rem;
+            --border-radius-lg: 12px;
+            --font-secondary: 'Montserrat', sans-serif;
+            --text-sm: 0.875rem;
+        }
+
+        [data-theme="dark"] {
+            /* Variables para modo oscuro */
+            --color-primary: #ffffff;
+            --color-secondary: #e5e7eb;
+            --color-background: #000000;
+            --color-text: #ffffff;
+            --color-text-light: #d1d5db;
+            --color-border: #374151;
+            --color-card: #111111;
+            --color-card-hover: #1a1a1a;
+            --color-input: #111111;
+            --color-input-focus: #1a1a1a;
+            --color-error: #f87171;
+            --color-success: #34d399;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+            --navbar-bg: #000000;
+            --navbar-text: #ffffff;
+            --navbar-hover: #e5e7eb;
+        }
+
+        /* Estilos base */
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .section-title {
+            color: var(--color-text);
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: var(--color-text);
+            opacity: 0.8;
+        }
+
+        /* Mejoras de accesibilidad */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Botón de modo oscuro */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .theme-toggle:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* Mejoras en las tarjetas de proyectos */
+        .project__card {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project__card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background: var(--color-card-hover);
+        }
+
+        /* Mejoras en los inputs */
+        .form__input, .form__textarea {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius-lg);
+            font-family: var(--font-secondary);
+            font-size: var(--text-sm);
+            color: var(--color-text);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+        }
+
+        .form__input:focus, .form__textarea:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 2px rgba(var(--color-accent-rgb), 0.1);
+            background-color: #ffffff;
+            outline: none;
+        }
+
+        [data-theme="dark"] .form__input,
+        [data-theme="dark"] .form__textarea {
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] .form__input:focus,
+        [data-theme="dark"] .form__textarea:focus {
+            background: rgba(0, 0, 0, 0.9);
+            border-color: #ffffff;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2),
+                       0 0 15px rgba(255, 255, 255, 0.1);
+            outline: none;
+            transform: translateY(-1px);
+        }
+
+        /* Indicador de progreso de carga */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--color-primary);
+            z-index: 1001;
+            transition: width 0.3s ease;
+        }
+
+        /* Estilos mejorados para el selector de idioma */
+        .language-switcher {
+            display: flex;
+            gap: 4px;
+            margin-right: 20px;
+            background: var(--color-card);
+            padding: 2px;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .lang-switcher {
+            background: none;
+            border: none;
+            color: var(--color-text-light);
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lang-switcher:hover {
+            color: var(--color-primary);
+            background: var(--color-card-hover);
+        }
+
+        .lang-switcher.active {
+            color: var(--color-primary);
+            background: var(--color-card-hover);
+            font-weight: 600;
+        }
+
+        .lang-switcher::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .lang-switcher:hover::after,
+        .lang-switcher.active::after {
+            width: 80%;
+        }
+
+        /* Ajuste para modo oscuro */
+        [data-theme="dark"] .language-switcher {
+            background: var(--color-card);
+            border-color: var(--color-border);
+        }
+
+        [data-theme="dark"] .lang-switcher:hover,
+        [data-theme="dark"] .lang-switcher.active {
+            background: var(--color-card-hover);
+        }
+
+        /* Estilos del navbar */
+        .navbar {
+            background: var(--navbar-bg);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .navbar__logo {
+            color: var(--navbar-text);
+        }
+
+        .navbar__link {
+            color: var(--navbar-text);
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .navbar__link:hover,
+        .navbar__link.active {
+            color: var(--navbar-hover);
+        }
+
+        .navbar__link:hover::after,
+        .navbar__link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--navbar-text);
+            opacity: 0.8;
+        }
+
+        .navbar__toggle span {
+            background: var(--navbar-text);
+        }
+
+        .hero__scroll-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-primary);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero__scroll-indicator:hover {
+            opacity: 1;
+        }
+
+        .hero__scroll-indicator i {
+            color: var(--color-primary);
+            animation: bounce 2s infinite;
+        }
+
+        [data-theme="dark"] .hero__scroll-indicator,
+        [data-theme="dark"] .hero__scroll-indicator i {
+            color: #ffffff;
+        }
+
+        /* Estilos base de contacto */
+        .contact {
+            background-color: var(--color-background);
+            padding: 4rem 0;
+        }
+
+        .contact__content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            background-color: var(--color-background);
+        }
+
+        .contact__title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .contact__text {
+            margin-bottom: 2rem;
+            color: var(--color-text);
+        }
+
+        .contact__item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .contact__item i {
+            font-size: 1.2rem;
+            color: var(--color-text);
+        }
+
+        .contact__social-link {
+            font-size: 1.5rem;
+            transition: opacity 0.3s ease;
+            color: var(--color-text);
+        }
+
+        .contact__social-link:hover {
+            color: var(--color-accent);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="dark"] .contact__social-link:hover {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .form__label {
+            margin-bottom: 0.5rem;
+            display: block;
+            color: var(--color-text);
+        }
+
+        .form__input,
+        .form__textarea {
+            background: var(--color-input);
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+        }
+
+        .form__button {
+            background: var(--color-text);
+            color: var(--color-background);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .form__button:hover {
+            opacity: 0.9;
+        }
+
+        /* Modo oscuro específico para contacto */
+        [data-theme="dark"] .contact,
+        [data-theme="dark"] .contact__content {
+            background-color: #000000;
+        }
+
+        [data-theme="light"] .proactive-assistant i {
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] .contact__title,
+        [data-theme="dark"] .contact__text,
+        [data-theme="dark"] .contact__item,
+        [data-theme="dark"] .contact__item i,
+        [data-theme="dark"] .contact__social-link,
+        [data-theme="dark"] .form__label {
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] .form__input,
+        [data-theme="dark"] .form__textarea {
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] .form__input:focus,
+        [data-theme="dark"] .form__textarea:focus {
+            background: rgba(0, 0, 0, 0.9);
+            border-color: #ffffff;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2),
+                       0 0 15px rgba(255, 255, 255, 0.1);
+            outline: none;
+            transform: translateY(-1px);
+        }
+
+        [data-theme="dark"] .form__label {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="dark"] .form__button {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        [data-theme="dark"] .form__button:hover {
+            background: #f3f4f6;
+        }
+
+        /* Proactive Assistant styles */
+        .proactive-assistant {
+            display: flex;
+            align-items: center;
+            background-color: rgba(var(--color-card-rgb), 0.95);
+            padding: 12px 20px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .proactive-assistant:hover {
+            background-color: rgba(var(--color-card-rgb), 0.7);
+            backdrop-filter: blur(12px);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25),
+                       0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="dark"] .proactive-assistant {
+            background: rgba(17, 17, 17, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px) brightness(0.7);
+        }
+
+        [data-theme="dark"] .proactive-assistant:hover {
+            background: rgba(17, 17, 17, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px) brightness(0.8);
+        }
+
+        .proactive-assistant i {
+            font-size: 1.8rem;
+            margin-right: 12px;
+            color: var(--color-accent) !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] .proactive-assistant i {
+            color: var(--color-accent) !important;
+        }
+
+        .proactive-assistant:hover i {
+            transform: scale(1.2) rotate(5deg);
+            color: var(--color-primary) !important;
+        }
+
+        [data-theme="dark"] .proactive-assistant:hover i {
+            color: var(--color-accent) !important;
+        }
+
+        .proactive-message {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-text);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] .proactive-message {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .proactive-assistant:hover .proactive-message {
+            transform: translateX(5px);
+            color: var(--color-accent);
+        }
+
+        [data-theme="dark"] .proactive-assistant:hover .proactive-message {
+            color: #ffffff;
+        }
+
+        /* Chatbot Widget styles */
+        .chatbot-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .chatbot-toggle {
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: calc(100% + 15px);
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background-color: var(--color-background);
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0.8) translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--color-border);
+        }
+
+        .chatbot-window.open {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+
+        .chatbot-header {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .chatbot-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .chatbot-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: var(--color-card);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chatbot-message {
+            padding: 8px 12px;
+            border-radius: 8px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .chatbot-message.user {
+            align-self: flex-end;
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .chatbot-message.bot {
+            align-self: flex-start;
+            background-color: var(--color-input);
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+        }
+
+        .chatbot-input-area {
+            display: flex;
+            padding: 10px 15px;
+            border-top: 1px solid var(--color-border);
+            background-color: var(--color-card);
+        }
+
+        .chatbot-input-area input {
+            flex-grow: 1;
+            padding: 8px 12px;
+            border: 1px solid var(--color-border);
+            border-radius: 20px;
+            margin-right: 10px;
+            background-color: var(--color-input);
+            color: var(--color-text);
+        }
+
+        .chatbot-input-area input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .chatbot-input-area button {
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .chatbot-input-area button:hover {
+            background-color: var(--color-secondary);
+        }
+
+        /* Estilos para modo claro */
+        .certificate__category {
+            background: #f8f9fa;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .certificate__category:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        .certificate__item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            margin: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        .certificate__item:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        /* Modo oscuro para certificados */
+        [data-theme="dark"] .certificate__category {
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .certificate__category:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="dark"] .certificate__item {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            margin: 8px;
+            padding: 16px;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .certificate__item:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Modo oscuro para las estadísticas */
+        [data-theme="dark"] .stat {
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .stat:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        /* Modo oscuro para los campos de entrada en contacto */
+        [data-theme="dark"] .form__input,
+        [data-theme="dark"] .form__textarea {
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .form__input:focus,
+        [data-theme="dark"] .form__textarea:focus {
+            background: rgba(0, 0, 0, 0.9);
+            border-color: #ffffff;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2),
+                       0 0 15px rgba(255, 255, 255, 0.1);
+            outline: none;
+            transform: translateY(-1px);
+        }
+
+        /* Estilos para las estadísticas en modo claro */
+        .stat {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .stat:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            background: #ffffff;
+        }
+
+        .stat__number {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .stat__label {
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        /* Estilos para modo claro */
+        .certificate__icon {
+            color: var(--color-primary);
+        }
+
+        .certificate__name {
+            color: var(--color-text);
+        }
+
+        /* Estilos para modo oscuro */
+        [data-theme="dark"] .certificate__icon {
+            color: var(--color-primary);
+        }
+
+        [data-theme="dark"] .certificate__name {
+            color: var(--color-text);
+        }
+
+        [data-theme="dark"] .chatbot-window {
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        [data-theme="dark"] .chatbot-messages {
+            background-color: #000000;
+        }
+
+        [data-theme="dark"] .chatbot-input-area {
+            background-color: #000000;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        [data-theme="dark"] .chatbot-input-area input {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="dark"] .chatbot-message.bot {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        [data-theme="dark"] .chatbot-header {
+            background-color: #ffffff;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        [data-theme="dark"] .chatbot-close {
+            color: #000000;
+        }
+
+        [data-theme="dark"] .chatbot-input-area button {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        [data-theme="dark"] .chatbot-input-area button:hover {
+            background-color: #f0f0f0;
+        }
+
+        [data-theme="dark"] .chatbot-message.user {
+            background-color: #ffffff;
+            color: #000000;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    
+    <!-- Optimización de rendimiento -->
+    <script>
+        // URL de la API de Gemini
+        const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyDZmsAuQea-Kt1tDVGjtsl1LaGw6UbbFok';
+
+        // Precargar imágenes críticas
+        const preloadImages = () => {
+            const images = [
+                'img/profile.jpg',
+                'img/Sistemadegestion.jpg',
+                'img/aplicacionweb.jpg',
+                'img/sistemaderecomendacion.jpg',
+                'img/desarrollodeapi.jpg',
+                'img/pipelinecdci.jpg',
+                'img/algoritmos.jpg'
+            ];
+            images.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        };
+
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            // Precargar imágenes
+            preloadImages();
+            
+            // Elementos del chatbot
+            const chatbotToggle = document.getElementById('chatbotToggle');
+            const chatbotClose = document.getElementById('chatbotClose');
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            const chatbotMessages = document.getElementById('chatbotMessages');
+            const chatbotInput = document.getElementById('chatbotInput');
+            const chatbotSend = document.getElementById('chatbotSend');
+
+            // Verificar que todos los elementos existan
+            if (!chatbotToggle || !chatbotClose || !chatbotWindow || !chatbotMessages || !chatbotInput || !chatbotSend) {
+                console.error('No se encontraron todos los elementos del chatbot');
+                return;
+            }
+
+            // Función para añadir un mensaje al chat
+            function addMessage(text, sender) {
+                const messageElement = document.createElement('p');
+                messageElement.classList.add('chatbot-message', sender);
+                messageElement.textContent = text;
+                chatbotMessages.appendChild(messageElement);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            // Función para enviar mensaje a Gemini
+            async function sendMessageToGemini(message) {
+                addMessage(message, 'user');
+                chatbotInput.value = '';
+
+                const context = `Eres un asistente virtual profesional para el portafolio de Piero Valdez. Tu objetivo es proporcionar respuestas precisas, profesionales y relevantes sobre el portafolio y la experiencia de Piero.
+
+                Perfil profesional de Piero:
+                - Desarrollador de software con experiencia en múltiples tecnologías
+                - Especializado en desarrollo web, APIs y sistemas empresariales
+                - Enfoque en soluciones tecnológicas innovadoras y eficientes
+                
+                Estructura del portafolio:
+                - Inicio: Presentación profesional y visión general
+                - Sobre mí: Experiencia y habilidades técnicas
+                - Proyectos: Casos de estudio detallados
+                - Contacto: Información profesional para colaboraciones
+                
+                Proyectos destacados y sus tecnologías:
+                1. Sistema de gestión empresarial
+                   - Tecnologías: Java, Spring Boot, PostgreSQL
+                   - Enfoque: Automatización y eficiencia operativa
+                
+                2. Aplicación web full-stack
+                   - Frontend: React, TypeScript, Material-UI
+                   - Backend: Node.js, Express, MongoDB
+                   - Características: Diseño responsivo, autenticación segura
+                
+                3. Sistema de recomendación
+                   - Tecnologías: Python, TensorFlow, scikit-learn
+                   - Aplicación: Análisis predictivo y machine learning
+                
+                4. Desarrollo de API RESTful
+                   - Tecnologías: Node.js, Express, JWT
+                   - Características: Documentación Swagger, seguridad OAuth2
+                
+                5. Pipeline CI/CD
+                   - Herramientas: Jenkins, Docker, Kubernetes
+                   - Enfoque: Automatización de despliegue y testing
+                
+                6. Algoritmos y estructuras de datos
+                   - Lenguajes: Python, Java
+                   - Aplicaciones: Optimización y resolución de problemas complejos
+
+                Guía de respuestas:
+                1. Precisión: Proporciona información específica y verificable
+                2. Relevancia: Conecta cada respuesta con la experiencia y proyectos de Piero
+                3. Profesionalismo: Mantén un tono formal y técnicamente preciso
+                4. Concisión: Responde de manera directa y estructurada
+                5. Contexto: Relaciona las preguntas generales con casos específicos del portafolio
+                
+                Formato de respuesta:
+                - Máximo 3 líneas por respuesta
+                - Incluir ejemplos específicos cuando sea relevante
+                - Usar terminología técnica apropiada
+                - Mantener coherencia con el perfil profesional`;
+
+                try {
+                    const response = await fetch(GEMINI_API_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            contents: [{
+                                parts: [{ text: `${context}\n\nPregunta del usuario: ${message}\n\nInstrucción: Proporciona una respuesta profesional, precisa y relevante para el portafolio.` }]
+                            }],
+                            generationConfig: {
+                                temperature: 0.2,
+                                topK: 10,
+                                topP: 0.7,
+                                maxOutputTokens: 150,
+                            }
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.candidates && data.candidates.length > 0 && 
+                        data.candidates[0].content && 
+                        data.candidates[0].content.parts && 
+                        data.candidates[0].content.parts.length > 0) {
+                        
+                        const botResponse = data.candidates[0].content.parts[0].text;
+                        if (botResponse) {
+                            addMessage(botResponse, 'bot');
+                        } else {
+                            addMessage('Lo siento, no pude generar una respuesta adecuada. ¿Podrías reformular tu pregunta?', 'bot');
+                        }
+                    } else {
+                        addMessage('Lo siento, hubo un problema al procesar tu mensaje. ¿Podrías intentarlo de nuevo?', 'bot');
+                    }
+                } catch (error) {
+                    console.error('Error al enviar mensaje:', error);
+                    addMessage('Lo siento, estoy teniendo problemas de conexión. Por favor, intenta de nuevo en unos momentos.', 'bot');
+                }
+            }
+
+            // Event Listeners
+            chatbotToggle.addEventListener('click', () => {
+                chatbotWindow.classList.toggle('open');
+            });
+
+            chatbotClose.addEventListener('click', () => {
+                chatbotWindow.classList.remove('open');
+            });
+
+            chatbotSend.addEventListener('click', () => {
+                const message = chatbotInput.value.trim();
+                if (message) {
+                    sendMessageToGemini(message);
+                }
+            });
+
+            chatbotInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const message = chatbotInput.value.trim();
+                    if (message) {
+                        sendMessageToGemini(message);
+                    }
+                }
+            });
+
+            // Mensaje inicial del chatbot
+            addMessage('¡Hola! Soy el asistente de Piero. ¿En qué puedo ayudarte hoy?', 'bot');
+        });
+    </script>
 </head>
 <body>
     <!-- Pantalla de carga -->
@@ -22,31 +1067,50 @@
         </div>
     </div>
 
+    <div class="progress-bar"></div>
+    
     <header class="navbar">
         <nav class="navbar__container container">
             <a href="#inicio" class="navbar__logo">Piero Valdez</a>
             <div class="navbar__menu">
-                <a href="#inicio" class="navbar__link active">Inicio</a>
-                <a href="#sobre-mi" class="navbar__link">Sobre Mí</a>
-                <a href="#certificados" class="navbar__link">Certificados</a>
-                <a href="#proyectos" class="navbar__link">Proyectos</a>
-                <a href="#contacto" class="navbar__link">Contacto</a>
+                <a href="#inicio" class="navbar__link active" data-lang="inicio">Inicio</a>
+                <a href="#sobre-mi" class="navbar__link" data-lang="sobre-mi">Sobre Mí</a>
+                <a href="#certificados" class="navbar__link" data-lang="certificados">Certificados</a>
+                <a href="#proyectos" class="navbar__link" data-lang="proyectos">Proyectos</a>
+                <a href="#contacto" class="navbar__link" data-lang="contacto">Contacto</a>
             </div>
-            <div class="navbar__toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="navbar__right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-switcher">
+                    <button class="lang-switcher" data-lang="es">ES</button>
+                    <button class="lang-switcher" data-lang="en">EN</button>
+                </div>
+                <div class="navbar__toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </nav>
     </header>
 
+    <!-- Filtros de proyectos -->
+    <div class="project-filters" id="projectFilters">
+        <button class="filter-btn active" data-filter="all" data-lang="filter-all">Todos</button>
+        <button class="filter-btn" data-filter="web" data-lang="filter-web">Web</button>
+        <button class="filter-btn" data-filter="mobile" data-lang="filter-mobile">Móvil</button>
+        <button class="filter-btn" data-filter="desktop" data-lang="filter-desktop">Escritorio</button>
+    </div>
+
     <main>
         <section id="inicio" class="hero">
             <div class="hero__content">
-                <h1 class="hero__title">Ingeniero de Software</h1>
-                <p class="hero__subtitle">Desarrollando soluciones innovadoras con pasión y dedicación</p>
+                <h1 class="hero__title" data-lang="hero-title">Ingeniero de Software</h1>
+                <p id="heroSubtitle" class="hero__subtitle" data-lang="hero-subtitle">Desarrollando soluciones innovadoras con pasión y dedicación</p>
                 <div class="hero__scroll-indicator">
-                    <span>Scroll</span>
+                    <span data-lang="scroll">Scroll</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
             </div>
@@ -54,27 +1118,27 @@
 
         <section id="sobre-mi" class="about">
             <div class="container">
-                <h2 class="section-title">Sobre Mí</h2>
+                <h2 class="section-title" data-lang="sobre-mi-title">Sobre Mí</h2>
                 <div class="about__content">
                     <div class="about__image">
                         <img src="img/profile.jpg" alt="Piero Valdez" class="about__img">
                     </div>
                     <div class="about__info">
                         <div class="about__text">
-                            <p>Soy un estudiante proactivo de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas (UPC), actualmente cursando mi segundo año. Mi trayectoria combina una sólida base académica con la adquisición continua de conocimientos a través de certificaciones en tecnologías y metodologías clave del desarrollo de software. Busco activamente oportunidades para aplicar y expandir mis habilidades en entornos profesionales.</p>
+                            <p data-lang="sobre-mi-content">Soy un estudiante proactivo de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas (UPC), actualmente cursando mi segundo año. Mi trayectoria combina una sólida base académica con la adquisición continua de conocimientos a través de certificaciones en tecnologías y metodologías clave del desarrollo de software. Busco activamente oportunidades para aplicar y expandir mis habilidades en entornos profesionales.</p>
                         </div>
                         <div class="about__stats">
                             <div class="stat">
                                 <span class="stat__number">2</span>
-                                <span class="stat__label">Años de Estudio</span>
+                                <span class="stat__label" data-lang="stat-experience">Años de Estudio</span>
                             </div>
                             <div class="stat">
                                 <span class="stat__number">25+</span>
-                                <span class="stat__label">Certificados</span>
+                                <span class="stat__label" data-lang="stat-projects">Certificados</span>
                             </div>
                             <div class="stat">
                                 <span class="stat__number">10+</span>
-                                <span class="stat__label">Tecnologías</span>
+                                <span class="stat__label" data-lang="stat-certificates">Tecnologías</span>
                             </div>
                         </div>
                     </div>
@@ -84,70 +1148,70 @@
 
         <section id="certificados" class="certificates">
             <div class="container">
-                <h2 class="section-title">Certificados Profesionales</h2>
+                <h2 class="section-title" data-lang="certificados-title">Certificados Profesionales</h2>
                 <div class="certificates__grid">
                     <div class="certificate__category">
-                        <h3 class="certificate__title">Desarrollo Web</h3>
+                        <h3 class="certificate__title" data-lang="cert-category-1">Desarrollo Web</h3>
                         <div class="certificate__items">
                             <div class="certificate__item">
                                 <i class="fab fa-react certificate__icon"></i>
-                                <span class="certificate__name">React Profesional</span>
+                                <span class="certificate__name" data-lang="cert-1-title">React Profesional</span>
                             </div>
                             <div class="certificate__item">
                                 <i class="fab fa-node-js certificate__icon"></i>
-                                <span class="certificate__name">Node.js Profesional</span>
+                                <span class="certificate__name" data-lang="cert-2-title">Node.js Profesional</span>
                             </div>
                             <div class="certificate__item">
                                 <i class="fab fa-php certificate__icon"></i>
-                                <span class="certificate__name">PHP 8</span>
+                                <span class="certificate__name" data-lang="cert-3-title">PHP 8</span>
                             </div>
                             <div class="certificate__item">
                                 <i class="fab fa-laravel certificate__icon"></i>
-                                <span class="certificate__name">Laravel Profesional</span>
+                                <span class="certificate__name" data-lang="cert-4-title">Laravel Profesional</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="certificate__category">
-                        <h3 class="certificate__title">Lenguajes de Programación</h3>
+                        <h3 class="certificate__title" data-lang="cert-category-2">Lenguajes de Programación</h3>
                         <div class="certificate__items">
                             <div class="certificate__item">
                                 <i class="fab fa-python certificate__icon"></i>
-                                <span class="certificate__name">Python Profesional</span>
+                                <span class="certificate__name" data-lang="cert-5-title">Python Profesional</span>
                             </div>
                             <div class="certificate__item">
                                 <i class="fab fa-java certificate__icon"></i>
-                                <span class="certificate__name">Spring Framework</span>
+                                <span class="certificate__name" data-lang="cert-6-title">Spring Framework</span>
                             </div>
                             <div class="certificate__item">
                                 <i class="fas fa-code certificate__icon"></i>
-                                <span class="certificate__name">C++ Profesional</span>
+                                <span class="certificate__name" data-lang="cert-7-title">C++ Profesional</span>
                             </div>
                             <div class="certificate__item">
                                 <i class="fab fa-js certificate__icon"></i>
-                                <span class="certificate__name">JavaScript Profesional</span>
+                                <span class="certificate__name" data-lang="cert-8-title">JavaScript Profesional</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="certificate__category">
-                        <h3 class="certificate__title">DevOps & Herramientas</h3>
+                        <h3 class="certificate__title" data-lang="cert-category-3">DevOps & Herramientas</h3>
                         <div class="certificate__items">
                             <div class="certificate__item">
                                 <i class="fab fa-docker certificate__icon"></i>
-                                <span class="certificate__name">Docker Profesional</span>
+                                <span class="certificate__name" data-lang="cert-9-title">Docker Profesional</span>
                             </div>
                             <div class="certificate__item">
                                 <i class="fab fa-git-alt certificate__icon"></i>
-                                <span class="certificate__name">Git Profesional</span>
+                                <span class="certificate__name" data-lang="cert-10-title">Git Profesional</span>
                             </div>
                             <div class="certificate__item">
                                 <i class="fas fa-database certificate__icon"></i>
-                                <span class="certificate__name">ETL con Python</span>
+                                <span class="certificate__name" data-lang="cert-11-title">ETL con Python</span>
                             </div>
                             <div class="certificate__item">
                                 <i class="fas fa-code-branch certificate__icon"></i>
-                                <span class="certificate__name">Airflow</span>
+                                <span class="certificate__name" data-lang="cert-12-title">Airflow</span>
                             </div>
                         </div>
                     </div>
@@ -157,20 +1221,20 @@
 
         <section id="proyectos" class="projects">
             <div class="container">
-                <h2 class="section-title">Proyectos Destacados</h2>
+                <h2 class="section-title" data-lang="proyectos-title">Proyectos Destacados</h2>
                 <div class="projects__grid">
                     <article class="project__card">
                         <img src="img/Sistemadegestion.jpg" alt="Proyecto Sistema de Gestión Optimizado" class="project__image">
                         <div class="project__content">
-                            <h3 class="project__title">Sistema de Gestión Empresarial</h3>
-                            <p class="project__description">
+                            <h3 class="project__title" data-lang="project-1-title">Sistema de Gestión Empresarial</h3>
+                            <p class="project__description" data-lang="project-1-desc">
                                 Desarrollo de una plataforma integral para la gestión de recursos y procesos internos, 
                                 aplicando arquitectura de microservicios y metodologías ágiles. Enfocado en escalabilidad y eficiencia.
                             </p>
                             <div class="project__tags">
-                                <span class="project__tag">Java</span>
-                                <span class="project__tag">Spring Boot</span>
-                                <span class="project__tag">Microservicios</span>
+                                <span class="project__tag" data-lang="project-1-tag-1">Java</span>
+                                <span class="project__tag" data-lang="project-1-tag-2">Spring Boot</span>
+                                <span class="project__tag" data-lang="project-1-tag-3">Microservicios</span>
                             </div>
                         </div>
                     </article>
@@ -178,83 +1242,79 @@
                     <article class="project__card">
                         <img src="img/aplicacionweb.jpg" alt="Proyecto Aplicación Web Interactivo" class="project__image">
                         <div class="project__content">
-                            <h3 class="project__title">Aplicación Web Interactiva</h3>
-                            <p class="project__description">
+                            <h3 class="project__title" data-lang="project-2-title">Aplicación Web Interactiva</h3>
+                            <p class="project__description" data-lang="project-2-desc">
                                 Plataforma web dinámica con interfaz de usuario moderna, 
                                 optimizada para la experiencia del usuario y desarrollada con enfoque en rendimiento y mantenibilidad.
                             </p>
                             <div class="project__tags">
-                                <span class="project__tag">React</span>
-                                <span class="project__tag">Node.js</span>
-                                <span class="project__tag">MongoDB</span>
+                                <span class="project__tag" data-lang="project-2-tag-1">React</span>
+                                <span class="project__tag" data-lang="project-2-tag-2">Node.js</span>
+                                <span class="project__tag" data-lang="project-2-tag-3">MongoDB</span>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Proyecto 3: Sistema de Recomendación -->
                     <article class="project__card">
                         <img src="img/sistemaderecomendacion.jpg" alt="Proyecto Sistema de Recomendación" class="project__image">
                         <div class="project__content">
-                            <h3 class="project__title">Sistema de Recomendación</h3>
-                            <p class="project__description">
+                            <h3 class="project__title" data-lang="project-3-title">Sistema de Recomendación</h3>
+                            <p class="project__description" data-lang="project-3-desc">
                                 Implementación de un sistema de recomendación basado en filtrado colaborativo, 
                                 procesando y analizando datos para ofrecer sugerencias personalizadas a los usuarios.
                             </p>
                             <div class="project__tags">
-                                <span class="project__tag">Python</span>
-                                <span class="project__tag">ETL</span>
-                                <span class="project__tag">Machine Learning Básico</span>
+                                <span class="project__tag" data-lang="project-3-tag-1">Python</span>
+                                <span class="project__tag" data-lang="project-3-tag-2">ETL</span>
+                                <span class="project__tag" data-lang="project-3-tag-3">Machine Learning Básico</span>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Proyecto 4: API RESTful -->
                     <article class="project__card">
                         <img src="img/desarrollodeapi.jpg" alt="Proyecto API RESTful" class="project__image">
                         <div class="project__content">
-                            <h3 class="project__title">API RESTful</h3>
-                            <p class="project__description">
+                            <h3 class="project__title" data-lang="project-4-title">API RESTful</h3>
+                            <p class="project__description" data-lang="project-4-desc">
                                 Diseño e implementación de una API RESTful robusta y segura, 
                                 con enfoque en buenas prácticas y seguridad.
                             </p>
                             <div class="project__tags">
-                                <span class="project__tag">Node.js</span>
-                                <span class="project__tag">Express</span>
-                                <span class="project__tag">JWT</span>
+                                <span class="project__tag" data-lang="project-4-tag-1">Node.js</span>
+                                <span class="project__tag" data-lang="project-4-tag-2">Express</span>
+                                <span class="project__tag" data-lang="project-4-tag-3">JWT</span>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Proyecto 5: Implementación CI/CD -->
                     <article class="project__card">
                         <img src="img/pipelinecdci.jpg" alt="Proyecto CI/CD" class="project__image">
                         <div class="project__content">
-                            <h3 class="project__title">Pipeline CI/CD</h3>
-                            <p class="project__description">
+                            <h3 class="project__title" data-lang="project-5-title">Pipeline CI/CD</h3>
+                            <p class="project__description" data-lang="project-5-desc">
                                 Implementación de un pipeline de Integración y Entrega Continua, 
                                 automatizando procesos de desarrollo y despliegue.
                             </p>
                             <div class="project__tags">
-                                <span class="project__tag">Git</span>
-                                <span class="project__tag">Docker</span>
-                                <span class="project__tag">Jenkins</span>
+                                <span class="project__tag" data-lang="project-5-tag-1">Git</span>
+                                <span class="project__tag" data-lang="project-5-tag-2">Docker</span>
+                                <span class="project__tag" data-lang="project-5-tag-3">Jenkins</span>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Proyecto 6: Proyecto en C++ -->
                     <article class="project__card">
                         <img src="img/algoritmos.jpg" alt="Proyecto Algoritmos C++" class="project__image">
                         <div class="project__content">
-                            <h3 class="project__title">Implementación de Algoritmos en C++</h3>
-                            <p class="project__description">
+                            <h3 class="project__title" data-lang="project-6-title">Implementación de Algoritmos en C++</h3>
+                            <p class="project__description" data-lang="project-6-desc">
                                 Desarrollo de soluciones eficientes para problemas algorítmicos, 
                                 enfocándose en optimización de tiempo y espacio, utilizando características avanzadas del lenguaje C++.
                             </p>
                             <div class="project__tags">
-                                <span class="project__tag">C++</span>
-                                <span class="project__tag">Algoritmos</span>
-                                <span class="project__tag">Estructuras de Datos</span>
+                                <span class="project__tag" data-lang="project-6-tag-1">C++</span>
+                                <span class="project__tag" data-lang="project-6-tag-2">Algoritmos</span>
+                                <span class="project__tag" data-lang="project-6-tag-3">Estructuras de Datos</span>
                             </div>
                         </div>
                     </article>
@@ -264,11 +1324,11 @@
 
         <section id="contacto" class="contact">
             <div class="container">
-                <h2 class="section-title">Contacto</h2>
+                <h2 class="section-title" data-lang="contacto-title">Contacto</h2>
                 <div class="contact__content">
                     <div class="contact__info">
-                        <h3 class="contact__title">Información de Contacto</h3>
-                        <p class="contact__text">
+                        <h3 class="contact__title" data-lang="contacto-info-title">Información de Contacto</h3>
+                        <p class="contact__text" data-lang="contacto-info-text">
                             Estoy disponible para oportunidades profesionales y colaboraciones. 
                             No dudes en contactarme a través de cualquiera de los siguientes medios.
                         </p>
@@ -295,20 +1355,22 @@
                             </a>
                         </div>
                     </div>
-                    <form class="contact__form" id="contactForm">
+                    <form class="contact__form" id="contactForm" action="https://formspree.io/f/xkgbolgg" method="POST">
                         <div class="form__group">
-                            <label for="name" class="form__label">Nombre</label>
+                            <label for="name" class="form__label" data-lang="form-name">Nombre</label>
                             <input type="text" id="name" name="name" class="form__input" required>
                         </div>
                         <div class="form__group">
-                            <label for="email" class="form__label">Email</label>
+                            <label for="email" class="form__label" data-lang="form-email">Email</label>
                             <input type="email" id="email" name="_replyto" class="form__input" required>
                         </div>
                         <div class="form__group">
-                            <label for="message" class="form__label">Mensaje</label>
-                            <textarea id="message" name="message" class="form__textarea" required></textarea>
+                            <label for="message" class="form__label" data-lang="message-label">Mensaje</label>
+                            <textarea id="message" name="message" class="form__textarea" required placeholder="¡Escribe tu mensaje aquí!"></textarea>
                         </div>
-                        <button type="submit" class="form__button">Enviar Mensaje</button>
+                        <input type="hidden" name="_subject" value="Nuevo mensaje del portafolio">
+                        <input type="text" name="_gotcha" style="display:none">
+                        <button type="submit" class="form__button" data-lang="form-submit">Enviar Mensaje</button>
                         <div id="formMessage" class="form__message"></div>
                     </form>
                 </div>
@@ -381,19 +1443,33 @@
         });
 
         // Animación de escritura para el subtítulo
-        const subtitleElement = document.querySelector('.hero__subtitle');
+        const subtitleElement = document.getElementById('heroSubtitle');
+        let phrases = []; // Mover la declaración aquí para que sea accesible globalmente o por la función
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        // Función para actualizar las frases según el idioma actual
+        function updateTypingPhrases() {
+            phrases = [
+                translations[currentLanguage]['phrase1'],
+                translations[currentLanguage]['phrase2'],
+                translations[currentLanguage]['phrase3'],
+                translations[currentLanguage]['phrase4']
+            ];
+            phraseIndex = 0; // Reiniciar al cambiar de idioma
+            charIndex = 0;   // Reiniciar al cambiar de idioma
+            isDeleting = false; // Reiniciar estado
+            // Detener cualquier animación en curso y reiniciar para la nueva frase
+            clearTimeout(window.typingTimeout); // Suponiendo que 'type' usa un timeout global
+            if (subtitleElement) {
+                subtitleElement.textContent = ''; // Limpiar el texto existente
+                startTypingAnimation(); // Reiniciar la animación con las nuevas frases
+            }
+        }
+
         // Asegurarse de que el elemento subtítulo exista antes de intentar animar
         if (subtitleElement) {
-            const phrases = [
-                "Desarrollando soluciones innovadoras con pasión y dedicación",
-                "Creando experiencias web únicas y funcionales",
-                "Apasionado por la tecnología y el aprendizaje constante",
-                "Convirtiendo ideas en código eficiente y elegante"
-            ];
-            let phraseIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-
             // Función principal de escritura/borrado
             function type() {
                 const currentPhrase = phrases[phraseIndex];
@@ -402,24 +1478,37 @@
                 subtitleElement.textContent = displayedText;
                 
                 // Ajustar velocidades para una animación más fluida
-                let typingSpeed = isDeleting ? 20 : 50; // Reducir los tiempos
-                const delayAfterTypingComplete = 1000; // Reducir el tiempo de pausa
+                let typingSpeed = 60; // Velocidad unificada para escritura y borrado
+                const delayAfterTypingComplete = 1000; // Pausa de 1 segundo antes de borrar
 
                 if (!isDeleting && charIndex < currentPhrase.length) {
+                    console.log(`Escribiendo: ${displayedText} (charIndex: ${charIndex})`);
                     charIndex++;
-                    setTimeout(type, typingSpeed);
+                    window.typingTimeout = setTimeout(type, typingSpeed);
                 } else if (isDeleting && charIndex > 0) {
+                    console.log(`Borrando: ${displayedText} (charIndex: ${charIndex})`);
                     charIndex--;
-                    setTimeout(type, typingSpeed);
+                    window.typingTimeout = setTimeout(type, typingSpeed);
                 } else {
-                    isDeleting = !isDeleting;
-                    
-                    if (!isDeleting) {
-                        phraseIndex = (phraseIndex + 1) % phrases.length;
-                        charIndex = 0;
-                        setTimeout(type, 30); // Reducir el tiempo entre frases
-                    } else {
-                        setTimeout(type, delayAfterTypingComplete);
+                    // Si terminó de escribir, pausar antes de borrar
+                    if (!isDeleting && charIndex === currentPhrase.length) {
+                        console.log(`Terminó de escribir. Pausando por ${delayAfterTypingComplete}ms.`);
+                        window.typingTimeout = setTimeout(() => {
+                            isDeleting = true;
+                            console.log('Iniciando borrado...');
+                            type(); // Iniciar borrado después de la pausa
+                        }, delayAfterTypingComplete);
+                    }
+                    // Si terminó de borrar, pausar antes de escribir la siguiente frase
+                    else if (isDeleting && charIndex === 0) {
+                        console.log(`Terminó de borrar. Iniciando la siguiente frase inmediatamente.`);
+                        window.typingTimeout = setTimeout(() => {
+                            isDeleting = false;
+                            phraseIndex = (phraseIndex + 1) % phrases.length;
+                            charIndex = 0;
+                            console.log('Iniciando escritura de la siguiente frase...');
+                            type(); // Iniciar escritura de la siguiente frase después de la pausa
+                        }, 30); // Tiempo mínimo para una transición fluida
                     }
                 }
             }
@@ -452,6 +1541,7 @@
                      }
                      // Pequeño retraso antes de iniciar la escritura para asegurar que la sección esté lista
                      setTimeout(() => {
+                         updateTypingPhrases(); // Cargar las frases iniciales
                          startTypingAnimation(); 
                      }, 300); // Retraso menor
                  }, 1500); // Este tiempo debe coincidir o ser ligeramente mayor que la animación del loader
@@ -463,130 +1553,55 @@
                  if ((loader && loader.classList.contains('hidden')) || !loader) {
                       // Si el loader está oculto o no existe, iniciar la animación después de un pequeño retraso
                       setTimeout(() => {
+                          updateTypingPhrases(); // Cargar las frases iniciales
                           startTypingAnimation();
                      }, 300); // Pequeño retraso
                  }
             }
         }
 
-        // Manejo del formulario de contacto con Formspree (sin redirección)
+        // Manejo del formulario de contacto con Formspree
         const contactForm = document.getElementById('contactForm');
         const formMessage = document.getElementById('formMessage');
 
         if (contactForm) {
             contactForm.addEventListener('submit', async (e) => {
-                e.preventDefault(); // Previene el envío por defecto del formulario
+                e.preventDefault();
+                formMessage.textContent = 'Enviando mensaje...';
+                formMessage.style.color = 'var(--color-text)';
 
-                const formData = new FormData(contactForm);
-                const response = await fetch('https://formspree.io/f/xkgbolgg', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
+                try {
+                    const formData = new FormData(contactForm);
+                    const response = await fetch('https://formspree.io/f/xkgbolgg', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        contactForm.reset();
+                        // Redirigir a la página de éxito inmediatamente
+                        window.location.href = 'success.html';
+                    } else {
+                        const data = await response.json();
+                        throw new Error(data.error || 'Error en el envío');
                     }
-                });
-
-                if (response.ok) {
-                    // Redirigir a la página de éxito personalizada
-                    window.location.href = 'success.html';
-                } else {
+                } catch (error) {
+                    console.error('Error:', error);
                     formMessage.textContent = 'Ocurrió un error al enviar el mensaje. Por favor, inténtalo de nuevo.';
-                    formMessage.style.color = 'var(--color-error)'; // Define --color-error en tu CSS si no existe
+                    formMessage.style.color = 'var(--color-error)';
                 }
-                // Si hay un error, mostrar el mensaje por un tiempo y luego ocultarlo
-                if (!response.ok) {
+
+                // Solo limpiar el mensaje si es un error
+                if (formMessage.textContent.includes('error')) {
                     setTimeout(() => {
                         formMessage.textContent = '';
-                    }, 5000); // El mensaje de error desaparece después de 5 segundos
+                    }, 5000);
                 }
             });
         }
-
-        // Lógica del Chatbot
-        document.addEventListener('DOMContentLoaded', () => {
-            const chatbotToggle = document.getElementById('chatbotToggle');
-            const chatbotClose = document.getElementById('chatbotClose');
-            const chatbotWindow = document.getElementById('chatbotWindow');
-            const chatbotMessages = document.getElementById('chatbotMessages');
-            const chatbotInput = document.getElementById('chatbotInput');
-            const chatbotSend = document.getElementById('chatbotSend');
-
-            // Asegurarse de que los elementos existan antes de añadir event listeners
-            if (chatbotToggle && chatbotClose && chatbotWindow && chatbotMessages && chatbotInput && chatbotSend) {
-                // Abre/cierra la ventana del chatbot
-                chatbotToggle.addEventListener('click', () => {
-                    chatbotWindow.classList.toggle('open');
-                    // Ocultar el mensaje proactivo si el chatbot se abre
-                    hideProactiveAssistant();
-                });
-
-                chatbotClose.addEventListener('click', () => {
-                    chatbotWindow.classList.remove('open');
-                });
-
-                const GEMINI_API_KEY = 'AIzaSyAyk59-MIbTddJm7YqduAMLdGR7ocQFpL0';
-                const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
-
-                // Función para añadir un mensaje al chat
-                function addMessage(text, sender) {
-                    const messageElement = document.createElement('p');
-                    messageElement.classList.add('chatbot-message', sender);
-                    messageElement.textContent = text;
-                    chatbotMessages.appendChild(messageElement);
-                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight; // Auto-scroll al final
-                }
-
-                // Función para enviar mensaje a Gemini API
-                async function sendMessageToGemini(message) {
-                    addMessage(message, 'user');
-                    chatbotInput.value = ''; // Limpiar input
-
-                    try {
-                        const response = await fetch(GEMINI_API_URL, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                contents: [{
-                                    parts: [{ text: message }]
-                                }]
-                            })
-                        });
-
-                        const data = await response.json();
-
-                        if (response.ok && data.candidates && data.candidates.length > 0) {
-                            addMessage(data.candidates[0].content.parts[0].text, 'bot');
-                        } else {
-                            addMessage('Lo siento, no pude obtener una respuesta en este momento.', 'bot');
-                            console.error('Error de la API de Gemini:', data);
-                        }
-                    } catch (error) {
-                        addMessage('Ocurrió un error al comunicarse con el asistente.', 'bot');
-                        console.error('Error al enviar mensaje a Gemini:', error);
-                    }
-                }
-
-                // Event listener para el botón de enviar
-                chatbotSend.addEventListener('click', () => {
-                    const message = chatbotInput.value.trim();
-                    if (message) {
-                        sendMessageToGemini(message);
-                    }
-                });
-
-                // Event listener para la tecla Enter en el input
-                chatbotInput.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') {
-                        const message = chatbotInput.value.trim();
-                        if (message) {
-                            sendMessageToGemini(message);
-                        }
-                    }
-                });
-            }
-        });
 
         // Lógica del Mensaje de Asistencia Proactiva
         document.addEventListener('DOMContentLoaded', () => {
@@ -607,14 +1622,16 @@
 
                 function showProactiveAssistant() {
                     proactiveAssistant.classList.add('show');
-                    proactiveMessage.textContent = '¿Necesitas ayuda?';
+                    proactiveMessage.setAttribute('data-lang', 'needs-help');
+                    proactiveMessage.textContent = translations[currentLanguage]['needs-help'];
                     proactiveMessage.classList.remove('explore', 'fade-out', 'fade-in');
                     
                     // Cambiar al segundo mensaje después de messageChangeDelay
                     messageTimeout = setTimeout(() => {
                         proactiveMessage.classList.add('fade-out');
                         setTimeout(() => {
-                            proactiveMessage.textContent = 'Explora mi portafolio';
+                            proactiveMessage.setAttribute('data-lang', 'explore-portfolio');
+                            proactiveMessage.textContent = translations[currentLanguage]['explore-portfolio'];
                             proactiveMessage.classList.add('explore', 'fade-in');
                             proactiveMessage.classList.remove('fade-out');
                         }, 300);
@@ -652,12 +1669,318 @@
             }
         });
 
+        // Traducciones
+        const translations = {
+            es: {
+                'inicio': 'Inicio',
+                'sobre-mi': 'Sobre Mí',
+                'certificados': 'Certificados',
+                'proyectos': 'Proyectos',
+                'contacto': 'Contacto',
+                'hero-title': 'Ingeniero de Software',
+                'hero-subtitle': 'Desarrollando soluciones innovadoras con pasión y dedicación',
+                'scroll': 'Scroll',
+                'sobre-mi-title': 'Sobre Mí',
+                'sobre-mi-content': 'Soy un estudiante proactivo de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas (UPC), actualmente cursando mi segundo año. Mi trayectoria combina una sólida base académica con la adquisición continua de conocimientos a través de certificaciones en tecnologías y metodologías clave del desarrollo de software. Busco activamente oportunidades para aplicar y expandir mis habilidades en entornos profesionales.',
+                'stat-experience': 'Años de Estudio',
+                'stat-projects': 'Certificados',
+                'stat-certificates': 'Tecnologías',
+                'certificados-title': 'Certificados Profesionales',
+                'cert-category-1': 'Desarrollo Web',
+                'cert-category-2': 'Lenguajes de Programación',
+                'cert-category-3': 'DevOps & Herramientas',
+                'cert-1-title': 'React Profesional',
+                'cert-2-title': 'Node.js Profesional',
+                'cert-3-title': 'PHP 8',
+                'cert-4-title': 'Laravel Profesional',
+                'cert-5-title': 'Python Profesional',
+                'cert-6-title': 'Spring Framework',
+                'cert-7-title': 'C++ Profesional',
+                'cert-8-title': 'JavaScript Profesional',
+                'cert-9-title': 'Docker Profesional',
+                'cert-10-title': 'Git Profesional',
+                'cert-11-title': 'ETL con Python',
+                'cert-12-title': 'Airflow',
+                'proyectos-title': 'Proyectos Destacados',
+                'project-1-title': 'Sistema de Gestión Empresarial',
+                'project-1-desc': 'Desarrollo de una plataforma integral para la gestión de recursos y procesos internos, aplicando arquitectura de microservicios y metodologías ágiles. Enfocado en escalabilidad y eficiencia.',
+                'project-1-tag-1': 'Java',
+                'project-1-tag-2': 'Spring Boot',
+                'project-1-tag-3': 'Microservicios',
+                'project-2-title': 'Aplicación Web Interactiva',
+                'project-2-desc': 'Plataforma web dinámica con interfaz de usuario moderna, optimizada para la experiencia del usuario y desarrollada con enfoque en rendimiento y mantenibilidad.',
+                'project-2-tag-1': 'React',
+                'project-2-tag-2': 'Node.js',
+                'project-2-tag-3': 'MongoDB',
+                'project-3-title': 'Sistema de Recomendación',
+                'project-3-desc': 'Implementación de un sistema de recomendación basado en filtrado colaborativo, procesando y analizando datos para ofrecer sugerencias personalizadas a los usuarios.',
+                'project-3-tag-1': 'Python',
+                'project-3-tag-2': 'ETL',
+                'project-3-tag-3': 'Machine Learning Básico',
+                'project-4-title': 'API RESTful',
+                'project-4-desc': 'Diseño e implementación de una API RESTful robusta y segura, con enfoque en buenas prácticas y seguridad.',
+                'project-4-tag-1': 'Node.js',
+                'project-4-tag-2': 'Express',
+                'project-4-tag-3': 'JWT',
+                'project-5-title': 'Pipeline CI/CD',
+                'project-5-desc': 'Implementación de un pipeline de Integración y Entrega Continua, automatizando procesos de desarrollo y despliegue.',
+                'project-5-tag-1': 'Git',
+                'project-5-tag-2': 'Docker',
+                'project-5-tag-3': 'Jenkins',
+                'project-6-title': 'Implementación de Algoritmos en C++',
+                'project-6-desc': 'Desarrollo de soluciones eficientes para problemas algorítmicos, enfocándose en optimización de tiempo y espacio, utilizando características avanzadas del lenguaje C++.',
+                'project-6-tag-1': 'C++',
+                'project-6-tag-2': 'Algoritmos',
+                'project-6-tag-3': 'Estructuras de Datos',
+                'contacto-title': 'Contacto',
+                'contacto-info-title': 'Información de Contacto',
+                'contacto-info-text': 'Estoy disponible para oportunidades profesionales y colaboraciones. No dudes en contactarme a través de cualquiera de los siguientes medios.',
+                'form-name': 'Nombre',
+                'form-email': 'Email',
+                'form-message': 'Mensaje',
+                'form-submit': 'Enviar Mensaje',
+                'chatbot-placeholder': 'Escribe tu mensaje...',
+                'chatbot-title': 'Asistente de IA',
+                'chatbot-welcome': '¡Hola! Soy el asistente de Piero. ¿En qué puedo ayudarte hoy?',
+                'phrase1': 'Desarrollando soluciones innovadoras con pasión y dedicación',
+                'phrase2': 'Creando experiencias web únicas y funcionales',
+                'phrase3': 'Apasionado por la tecnología y el aprendizaje constante',
+                'phrase4': 'Convirtiendo ideas en código eficiente y elegante',
+                'needs-help': '¿Necesitas ayuda?',
+                'explore-portfolio': 'Escríbeme :)',
+                'form-error': 'Ocurrió un error al enviar el mensaje. Por favor, inténtalo de nuevo.',
+                'filter-all': 'Todos',
+                'filter-web': 'Web',
+                'filter-mobile': 'Móvil',
+                'filter-desktop': 'Escritorio',
+                'message-label': 'Mensaje'
+            },
+            en: {
+                'inicio': 'Home',
+                'sobre-mi': 'About Me',
+                'certificados': 'Certificates',
+                'proyectos': 'Projects',
+                'contacto': 'Contact',
+                'hero-title': 'Software Engineer',
+                'hero-subtitle': 'Developing innovative solutions with passion and dedication',
+                'scroll': 'Scroll',
+                'sobre-mi-title': 'About Me',
+                'sobre-mi-content': 'I am a proactive Software Engineering student at the Peruvian University of Applied Sciences (UPC), currently in my second year. My journey combines a solid academic foundation with continuous knowledge acquisition through certifications in key software development technologies and methodologies. I actively seek opportunities to apply and expand my skills in professional environments.',
+                'stat-experience': 'Years of Study',
+                'stat-projects': 'Certificates',
+                'stat-certificates': 'Technologies',
+                'certificados-title': 'Professional Certificates',
+                'cert-category-1': 'Web Development',
+                'cert-category-2': 'Programming Languages',
+                'cert-category-3': 'DevOps & Tools',
+                'cert-1-title': 'Professional React',
+                'cert-2-title': 'Professional Node.js',
+                'cert-3-title': 'PHP 8',
+                'cert-4-title': 'Professional Laravel',
+                'cert-5-title': 'Professional Python',
+                'cert-6-title': 'Spring Framework',
+                'cert-7-title': 'Professional C++',
+                'cert-8-title': 'Professional JavaScript',
+                'cert-9-title': 'Professional Docker',
+                'cert-10-title': 'Professional Git',
+                'cert-11-title': 'ETL with Python',
+                'cert-12-title': 'Airflow',
+                'proyectos-title': 'Featured Projects',
+                'project-1-title': 'Enterprise Management System',
+                'project-1-desc': 'Development of a comprehensive platform for resource and internal process management, applying microservices architecture and agile methodologies. Focused on scalability and efficiency.',
+                'project-1-tag-1': 'Java',
+                'project-1-tag-2': 'Spring Boot',
+                'project-1-tag-3': 'Microservices',
+                'project-2-title': 'Interactive Web Application',
+                'project-2-desc': 'Dynamic web platform with modern user interface, optimized for user experience and developed with a focus on performance and maintainability.',
+                'project-2-tag-1': 'React',
+                'project-2-tag-2': 'Node.js',
+                'project-2-tag-3': 'MongoDB',
+                'project-3-title': 'Recommendation System',
+                'project-3-desc': 'Implementation of a collaborative filtering-based recommendation system, processing and analyzing data to provide personalized suggestions to users.',
+                'project-3-tag-1': 'Python',
+                'project-3-tag-2': 'ETL',
+                'project-3-tag-3': 'Basic Machine Learning',
+                'project-4-title': 'RESTful API',
+                'project-4-desc': 'Design and implementation of a robust and secure RESTful API, focusing on best practices and security.',
+                'project-4-tag-1': 'Node.js',
+                'project-4-tag-2': 'Express',
+                'project-4-tag-3': 'JWT',
+                'project-5-title': 'CI/CD Pipeline',
+                'project-5-desc': 'Implementation of a Continuous Integration and Delivery pipeline, automating development and deployment processes.',
+                'project-5-tag-1': 'Git',
+                'project-5-tag-2': 'Docker',
+                'project-5-tag-3': 'Jenkins',
+                'project-6-title': 'C++ Algorithm Implementation',
+                'project-6-desc': 'Development of efficient solutions for algorithmic problems, focusing on time and space optimization, using advanced C++ language features.',
+                'project-6-tag-1': 'C++',
+                'project-6-tag-2': 'Algorithms',
+                'project-6-tag-3': 'Data Structures',
+                'contacto-title': 'Contact',
+                'contacto-info-title': 'Contact Information',
+                'contacto-info-text': 'I am available for professional opportunities and collaborations. Feel free to contact me through any of the following means.',
+                'form-name': 'Name',
+                'form-email': 'Email',
+                'form-message': 'Message',
+                'form-submit': 'Send Message',
+                'chatbot-placeholder': 'Type your message...',
+                'chatbot-title': 'AI Assistant',
+                'chatbot-welcome': 'Hello! I am Piero\'s assistant. How can I help you today?',
+                'phrase1': 'Developing innovative solutions with passion and dedication',
+                'phrase2': 'Creating unique and functional web experiences',
+                'phrase3': 'Passionate about technology and continuous learning',
+                'phrase4': 'Converting ideas into efficient and elegant code',
+                'needs-help': 'Need help?',
+                'explore-portfolio': 'Write me :)',
+                'form-error': 'An error occurred while sending the message. Please try again.',
+                'filter-all': 'All',
+                'filter-web': 'Web',
+                'filter-mobile': 'Mobile',
+                'filter-desktop': 'Desktop',
+                'message-label': 'Message'
+            }
+        };
+
+        let currentLanguage = 'es'; // Idioma por defecto
+
+        // Función para aplicar las traducciones
+        function applyTranslations() {
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[currentLanguage][key]) {
+                    element.textContent = translations[currentLanguage][key];
+                }
+            });
+
+            // Actualizar las frases de la animación de escritura
+            updateTypingPhrases();
+        }
+
+        // Función para cambiar el idioma
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            applyTranslations();
+            updateActiveClass(lang);
+        }
+
+        // Función para actualizar la clase activa de los botones de idioma
+        function updateActiveClass(lang) {
+            document.querySelectorAll('.lang-switcher').forEach(button => {
+                if (button.getAttribute('data-lang') === lang) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        // Cargar el idioma guardado o usar el predeterminado
+        const savedLanguage = localStorage.getItem('language');
+        if (savedLanguage) {
+            currentLanguage = savedLanguage;
+        }
+        applyTranslations();
+        updateActiveClass(currentLanguage);
+
+        // Asignar eventos a los botones de cambio de idioma
+        document.querySelectorAll('.lang-switcher').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const lang = e.target.getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+
+        // Asegurarse de que el idioma se aplica correctamente en la carga inicial
+        window.addEventListener('DOMContentLoaded', applyTranslations);
+
+        // Gestión del tema oscuro
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeToggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+
+        // Cargar tema guardado o usar el del sistema
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else {
+            setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+
+        // Filtrado de proyectos
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project__card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                
+                // Actualizar botones activos
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Filtrar proyectos
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Indicador de progreso de carga
+        const progressBar = document.querySelector('.progress-bar');
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (window.scrollY / windowHeight) * 100;
+            progressBar.style.width = `${progress}%`;
+        });
+
+        // Lazy loading de imágenes
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+        });
+
+        // Mejoras de accesibilidad
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-navigation');
+        });
     </script>
 
     <!-- Proactive Assistant Message -->
     <div class="proactive-assistant" id="proactiveAssistant">
-        <i class="fas fa-robot"></i>
-        <span class="proactive-message" id="proactiveMessage">¿Necesitas ayuda?</span>
+        <i class="fas fa-robot" style="color: var(--color-text) !important;"></i>
+        <span class="proactive-message" id="proactiveMessage" data-lang="needs-help">¿Necesitas ayuda?</span>
     </div>
 
     <!-- Chatbot Widget -->
@@ -667,14 +1990,13 @@
         </button>
         <div class="chatbot-window" id="chatbotWindow">
             <div class="chatbot-header">
-                <span>Asistente de IA</span>
+                <span data-lang="chatbot-title">Asistente de IA</span>
                 <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
             </div>
             <div class="chatbot-messages" id="chatbotMessages">
-                <p class="chatbot-message bot">¡Hola! Soy el asistente de Piero. ¿En qué puedo ayudarte hoy?</p>
             </div>
             <div class="chatbot-input-area">
-                <input type="text" id="chatbotInput" placeholder="Escribe tu mensaje..." autocomplete="off">
+                <input type="text" id="chatbotInput" placeholder="Escribe tu mensaje..." autocomplete="off" data-lang="chatbot-placeholder">
                 <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
