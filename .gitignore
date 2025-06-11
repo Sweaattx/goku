@@ -1,4 +1,36 @@
-# Archivos del sistema
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
 .DS_Store
 Thumbs.db
 
@@ -9,21 +41,9 @@ Thumbs.db
 
 # Directorios de dependencias
 node_modules/
-venv/
-__pycache__/
-
-# Archivos de IDE
-.vscode/
-.idea/
-*.swp
-*.swo
 
 # Archivos de log
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
-
-# Archivos de construcción
-/dist
-/build 
+yarn-error.log* 
