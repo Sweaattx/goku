@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Filtros de Proyectos</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .filter-btn { padding: 10px 15px; margin: 5px; border: 2px solid #ccc; background: white; cursor: pointer; }
+        .filter-btn.active { background: #007bff; color: white; }
+        .project__card { border: 1px solid #ddd; padding: 15px; margin: 10px 0; }
+        .project__card.hidden { display: none; }
+        .load-more-btn { padding: 10px 20px; background: #28a745; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Test de Filtros de Proyectos</h1>
+    
+    <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">Todos (14)</button>
+        <button class="filter-btn" data-filter="frontend">Frontend (4)</button>
+        <button class="filter-btn" data-filter="backend">Backend (4)</button>
+        <button class="filter-btn" data-filter="data">Data Science (3)</button>
+        <button class="filter-btn" data-filter="devops">DevOps (3)</button>
+    </div>
+
+    <div class="projects">
+        <div class="project__card" data-category="frontend">
+            <h3>Proyecto Frontend 1</h3>
+            <p>React App</p>
+        </div>
+        <div class="project__card" data-category="frontend">
+            <h3>Proyecto Frontend 2</h3>
+            <p>Vue.js Dashboard</p>
+        </div>
+        <div class="project__card" data-category="backend">
+            <h3>Proyecto Backend 1</h3>
+            <p>Node.js API</p>
+        </div>
+        <div class="project__card" data-category="backend">
+            <h3>Proyecto Backend 2</h3>
+            <p>Java Microservices</p>
+        </div>
+        <div class="project__card" data-category="data">
+            <h3>Proyecto Data Science 1</h3>
+            <p>ML Recommendation</p>
+        </div>
+        <div class="project__card" data-category="devops">
+            <h3>Proyecto DevOps 1</h3>
+            <p>CI/CD Pipeline</p>
+        </div>
+    </div>
+
+    <button class="load-more-btn">Ver más</button>
+
+    <script>
+        function initProjectFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project__card');
+            
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = btn.dataset.filter;
+                    
+                    // Actualizar botón activo
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // Filtrar proyectos
+                    projectCards.forEach(card => {
+                        const category = card.dataset.category;
+                        
+                        if (filter === 'all' || category === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', initProjectFilters);
+    </script>
+</body>
+</html>

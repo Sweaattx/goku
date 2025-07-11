@@ -77,14 +77,27 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
+        /* Mejorar espaciado general */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Espaciado entre secciones */
+        section {
+            margin-bottom: 2rem;
+        }
+
+        /* Títulos de sección con más espacio */
         .section-title {
             color: var(--color-text);
             font-size: 2.5rem;
             font-weight: 600;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             text-align: center;
             position: relative;
-            padding-bottom: 1rem;
+            padding-bottom: 1.5rem;
         }
 
         .section-title::after {
@@ -680,201 +693,767 @@
             background-color: var(--color-secondary);
         }
 
-        /* Estilos para modo claro */
-        .certificate__category {
-            background: #f8f9fa;
-            border: 1px solid rgba(0, 0, 0, 0.15);
+        /* Corrección para el hover del botón del chatbot en modo claro */
+        .chatbot-toggle:hover {
+            transform: scale(1.05);
+            background-color: var(--color-primary);
+        }
+
+        /* Corrección para el botón del chatbot en modo oscuro */
+        [data-theme="dark"] .chatbot-toggle {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        [data-theme="dark"] .chatbot-toggle:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* === ESTILOS PARA NUEVAS SECCIONES === */
+
+        /* Sección de Habilidades con Carousel */
+        .skills {
+            background-color: var(--color-background);
+            padding: 5rem 0;
+        }
+
+        .skills__carousel-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            overflow: hidden;
+            padding: 0 60px;
+        }
+
+        .skills__carousel {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+            gap: 2rem;
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        .skills__carousel.no-transition {
+            transition: none;
+        }
+
+        .skills__category {
+            flex: 0 0 280px;
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        .skills__category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--color-card);
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: var(--shadow-md);
+        }
+
+        .carousel-btn:hover {
+            background: var(--color-primary);
+            color: var(--color-card);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: translateY(-50%) scale(0.9);
+        }
+
+        .carousel-btn.prev {
+            left: 10px;
+        }
+
+        .carousel-btn.next {
+            right: 10px;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--color-border);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-dot::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-primary);
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .carousel-dot.active {
+            transform: scale(1.3);
+        }
+
+        .carousel-dot.active::before {
+            transform: scale(1);
+        }
+
+        .carousel-dot:hover {
+            transform: scale(1.2);
+            background: var(--color-primary);
+            opacity: 0.8;
+        }
+
+        /* Modo oscuro */
+        [data-theme="dark"] .carousel-dot {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        [data-theme="dark"] .carousel-dot::before {
+            background: #ffffff;
+        }
+
+        [data-theme="dark"] .carousel-dot:hover {
+            background: #ffffff;
+        }
+
+        .skills__category-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .skills__category-icon {
+            font-size: 1.6rem;
+            color: var(--color-primary);
+        }
+
+        .skill-item {
+            margin-bottom: 2rem;
+        }
+
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .skill-percentage {
+            font-size: 0.875rem;
+            color: var(--color-text-light);
+            font-weight: 600;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background-color: var(--color-border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            border-radius: 4px;
+            transition: width 1.5s ease-in-out;
+            transform-origin: left;
+        }
+
+        /* Sección de Servicios */
+        .services {
+            background-color: var(--color-card);
+            padding: 5rem 0;
+        }
+
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-card {
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 1.25rem;
+        }
+
+        .service-description {
+            color: var(--color-text-light);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Sección de Proceso de Trabajo */
+        .workflow {
+            background-color: var(--color-background);
+            padding: 5rem 0;
+        }
+
+        .workflow__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .workflow-step {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .workflow-step::before {
+            content: attr(data-step);
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-primary);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .workflow-step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .workflow-icon {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+        }
+
+        .workflow-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+
+        .workflow-description {
+            color: var(--color-text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Estilos para modo oscuro de las nuevas secciones */
+        [data-theme="dark"] .skills__category,
+        [data-theme="dark"] .service-card,
+        [data-theme="dark"] .workflow-step {
+            background: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        [data-theme="dark"] .skills__category:hover,
+        [data-theme="dark"] .service-card:hover,
+        [data-theme="dark"] .workflow-step:hover {
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="dark"] .services {
+            background-color: #111111;
+        }
+
+        [data-theme="dark"] .skill-bar {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Filtros de Certificados */
+        .certificate-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--color-card);
+            border: 2px solid var(--color-border);
+            border-radius: 25px;
+            padding: 0.8rem 1.5rem;
+            font-weight: 600;
+            color: var(--color-text-light);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.2);
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border-color: var(--color-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+        }
+
+        .filter-btn.active:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 123, 255, 0.5);
+        }
+
+        .filter-count {
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 0.2rem 0.6rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .filter-btn.active .filter-count {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Animaciones de filtrado */
+        .certificates .certificate__category {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center;
+        }
+
+        .certificates .certificate__category.hidden {
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            pointer-events: none;
+            max-height: 0;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .certificates .certificate__category.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            max-height: 1000px;
+        }
+
+        /* Asegurar que proyectos NO se vean afectados por filtros */
+        .projects {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        .projects .project__card {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        /* Sección de Certificados */
+        .certificates {
+            background-color: var(--color-background);
+            padding: 5rem 0;
+        }
+
+        .certificates__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .certificate__category {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-sm);
             transition: all 0.3s ease;
         }
 
         .certificate__category:hover {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .certificate__title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+            text-align: center;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        .certificate__items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
         }
 
         .certificate__item {
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 16px 20px;
-            margin: 8px;
-            border-radius: 8px;
+            gap: 1.25rem;
+            padding: 1rem;
+            background: var(--color-background);
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
             transition: all 0.3s ease;
-            background: #f8f9fa;
-            border: 1px solid rgba(0, 0, 0, 0.15);
         }
 
         .certificate__item:hover {
+            background: var(--color-card-hover);
             border-color: var(--color-primary);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.2);
+            transform: translateX(5px);
         }
 
-        /* Modo oscuro para certificados */
+        .certificate__icon {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .certificate__name {
+            font-weight: 500;
+        }
+
+        /* Estilos para modo oscuro de certificados */
         [data-theme="dark"] .certificate__category {
-            background: #000000;
+            background: #111111;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
         }
 
         [data-theme="dark"] .certificate__category:hover {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-            transform: translateY(-2px);
+            background: #1a1a1a;
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         [data-theme="dark"] .certificate__item {
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            margin: 8px;
-            padding: 16px;
-            transition: all 0.3s ease;
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         [data-theme="dark"] .certificate__item:hover {
-            border-color: var(--color-primary);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: #111111;
+            border-color: #ffffff;
         }
 
-        /* Modo oscuro para las estadísticas */
-        [data-theme="dark"] .stat {
-            background: #000000;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        /* Sección de Proyectos */
+        .projects {
+            background-color: var(--color-card);
+            padding: 5rem 0;
+        }
+
+        .projects__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .project__card {
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .project__card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary);
+        }
+
+        .project__image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project__card:hover .project__image {
+            transform: scale(1.05);
+        }
+
+        .project__content {
+            padding: 2rem;
+        }
+
+        .project__title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .project__description {
+            color: var(--color-text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .project__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project__tag {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
-        [data-theme="dark"] .stat:hover {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-            transform: translateY(-2px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            background: rgba(0, 0, 0, 0.9);
-        }
-
-        /* Modo oscuro para los campos de entrada en contacto */
-        [data-theme="dark"] .form__input,
-        [data-theme="dark"] .form__textarea {
-            background: #000000;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        [data-theme="dark"] .form__input:focus,
-        [data-theme="dark"] .form__textarea:focus {
-            background: rgba(0, 0, 0, 0.9);
-            border-color: #ffffff;
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2),
-                       0 0 15px rgba(255, 255, 255, 0.1);
-            outline: none;
+        .project__tag:hover {
+            background: var(--color-secondary);
             transform: translateY(-1px);
         }
 
-        /* Estilos para las estadísticas en modo claro */
-        .stat {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+        /* Modo oscuro para proyectos */
+        [data-theme="dark"] .projects {
+            background-color: #111111;
         }
 
-        .stat:hover {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-            background: #ffffff;
-        }
-
-        .stat__number {
-            color: var(--color-primary);
-            font-weight: 600;
-        }
-
-        .stat__label {
-            color: var(--color-text);
-            font-weight: 500;
-        }
-
-        /* Estilos para modo claro */
-        .certificate__icon {
-            color: var(--color-primary);
-        }
-
-        .certificate__name {
-            color: var(--color-text);
-        }
-
-        /* Estilos para modo oscuro */
-        [data-theme="dark"] .certificate__icon {
-            color: var(--color-primary);
-        }
-
-        [data-theme="dark"] .certificate__name {
-            color: var(--color-text);
-        }
-
-        [data-theme="dark"] .chatbot-window {
+        [data-theme="dark"] .project__card {
             background: #000000;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
-        [data-theme="dark"] .chatbot-messages {
-            background-color: #000000;
+        [data-theme="dark"] .project__card:hover {
+            background: #111111;
+            border-color: #ffffff;
         }
 
-        [data-theme="dark"] .chatbot-input-area {
-            background-color: #000000;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        /* Animaciones para las barras de progreso */
+        @keyframes fillProgress {
+            from {
+                width: 0%;
+            }
+            to {
+                width: var(--progress-width);
+            }
         }
 
-        [data-theme="dark"] .chatbot-input-area input {
-            background-color: rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.9);
+        .skill-progress.animate {
+            animation: fillProgress 1.5s ease-in-out;
         }
 
-        [data-theme="dark"] .chatbot-message.bot {
-            background-color: rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .skills__grid,
+            .services__grid,
+            .workflow__grid,
+            .certificates__grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+            
+            .skills__category,
+            .service-card,
+            .workflow-step,
+            .certificate__category {
+                padding: 1.5rem;
+            }
+            
+            .skills {
+                padding: 3rem 0;
+            }
+            
+            .services {
+                padding: 3rem 0;
+            }
+            
+            .workflow {
+                padding: 3rem 0;
+            }
+            
+            .certificates {
+                padding: 3rem 0;
+            }
         }
 
-        [data-theme="dark"] .chatbot-header {
-            background-color: #ffffff;
-            color: #000000;
-            font-weight: 600;
+        @media (min-width: 769px) and (max-width: 1200px) {
+            .skills__grid,
+            .services__grid,
+            .workflow__grid,
+            .certificates__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
         }
 
-        [data-theme="dark"] .chatbot-close {
-            color: #000000;
-        }
-
-        [data-theme="dark"] .chatbot-input-area button {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        [data-theme="dark"] .chatbot-input-area button:hover {
-            background-color: #f0f0f0;
-        }
-
-        [data-theme="dark"] .chatbot-message.user {
-            background-color: #ffffff;
-            color: #000000;
-            border: 1px solid rgba(0, 0, 0, 0.1);
+        @media (min-width: 1201px) and (max-width: 1600px) {
+            .skills__grid,
+            .services__grid,
+            .workflow__grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .certificates__grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
     </style>
     
@@ -1075,8 +1654,7 @@
             <div class="navbar__menu">
                 <a href="#inicio" class="navbar__link active" data-lang="inicio">Inicio</a>
                 <a href="#sobre-mi" class="navbar__link" data-lang="sobre-mi">Sobre Mí</a>
-                <a href="#certificados" class="navbar__link" data-lang="certificados">Certificados</a>
-                <a href="#proyectos" class="navbar__link" data-lang="proyectos">Proyectos</a>
+                <a href="#habilidades" class="navbar__link" data-lang="portafolio">Portafolio</a>
                 <a href="#contacto" class="navbar__link" data-lang="contacto">Contacto</a>
             </div>
             <div class="navbar__right">
@@ -1096,22 +1674,57 @@
         </nav>
     </header>
 
-    <!-- Filtros de proyectos -->
-    <div class="project-filters" id="projectFilters">
-        <button class="filter-btn active" data-filter="all" data-lang="filter-all">Todos</button>
-        <button class="filter-btn" data-filter="web" data-lang="filter-web">Web</button>
-        <button class="filter-btn" data-filter="mobile" data-lang="filter-mobile">Móvil</button>
-        <button class="filter-btn" data-filter="desktop" data-lang="filter-desktop">Escritorio</button>
-    </div>
-
     <main>
-        <section id="inicio" class="hero">
-            <div class="hero__content">
-                <h1 class="hero__title" data-lang="hero-title">Ingeniero de Software</h1>
-                <p id="heroSubtitle" class="hero__subtitle" data-lang="hero-subtitle">Desarrollando soluciones innovadoras con pasión y dedicación</p>
-                <div class="hero__scroll-indicator">
-                    <span data-lang="scroll">Scroll</span>
-                    <i class="fas fa-chevron-down"></i>
+        <section id="inicio" class="hero-modern">
+            <div class="hero-modern__container">
+                <!-- Información del desarrollador -->
+                <div class="hero-modern__info">
+                    <div class="hero-modern__header">
+                        <h1 class="hero-modern__name" data-lang="hero-name">Piero Valdez</h1>
+                        <p class="hero-modern__role" data-lang="hero-role">Software Engineer & Full Stack Developer</p>
+                    </div>
+                    
+                    <div class="hero-modern__description">
+                        <p data-lang="hero-description">
+                            Creando experiencias digitales excepcionales con código limpio y diseño intuitivo. 
+                            Especializado en desarrollo web moderno y arquitecturas escalables.
+                        </p>
+                    </div>
+
+                    <div class="hero-modern__website">
+                        <span class="hero-modern__url">pierovaldez.dev</span>
+                    </div>
+                </div>
+
+                <!-- Imagen principal -->
+                <div class="hero-modern__image">
+                    <img src="img/gokuhero.jpg" alt="Piero Valdez" class="hero-modern__img">
+                    <div class="hero-modern__overlay"></div>
+                </div>
+
+                <!-- Navegación de secciones -->
+                <div class="hero-modern__navigation">
+                    <span class="hero-modern__current">01</span>
+                    <span class="hero-modern__separator">/</span>
+                    <span class="hero-modern__total">05</span>
+                </div>
+
+                <!-- Footer info -->
+                <div class="hero-modern__footer">
+                    <div class="hero-modern__social">
+                        <a href="mailto:tu.email@gmail.com" class="hero-modern__link">Email</a>
+                        <a href="https://linkedin.com/in/tu-perfil" class="hero-modern__link">LinkedIn</a>
+                        <a href="https://github.com/Sweaattx" class="hero-modern__link">GitHub</a>
+                    </div>
+                    <div class="hero-modern__copyright">
+                        <span>2025 © Piero Valdez</span>
+                    </div>
+                </div>
+
+                <!-- Scroll indicator -->
+                <div class="hero-modern__scroll">
+                    <span data-lang="hero-scroll">Explora mi trabajo</span>
+                    <div class="hero-modern__scroll-line"></div>
                 </div>
             </div>
         </section>
@@ -1146,11 +1759,910 @@
             </div>
         </section>
 
+        <section id="habilidades" class="skills">
+            <div class="container">
+                <h2 class="section-title" data-lang="habilidades-title">Habilidades Técnicas</h2>
+                <div class="skills__carousel-container">
+                    <button class="carousel-btn prev" id="skillsPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="skills__carousel" id="skillsCarousel">
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-laptop-code skills__category-icon"></i>
+                                <span data-lang="skills-frontend">Frontend</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>React</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>JavaScript</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>HTML/CSS</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="95"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>TypeScript</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="80"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-server skills__category-icon"></i>
+                                <span data-lang="skills-backend">Backend</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Node.js</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Python</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="88"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Java Spring</span>
+                                    <span class="skill-percentage">82%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="82"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>PHP/Laravel</span>
+                                    <span class="skill-percentage">78%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="78"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-database skills__category-icon"></i>
+                                <span data-lang="skills-database">Base de Datos</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>PostgreSQL</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>MongoDB</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="80"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>MySQL</span>
+                                    <span class="skill-percentage">82%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="82"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Redis</span>
+                                    <span class="skill-percentage">75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="75"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-tools skills__category-icon"></i>
+                                <span data-lang="skills-tools">Herramientas</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Docker</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Git</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Jenkins</span>
+                                    <span class="skill-percentage">75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="75"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>AWS</span>
+                                    <span class="skill-percentage">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="70"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-mobile-alt skills__category-icon"></i>
+                                <span data-lang="skills-mobile">Desarrollo Móvil</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>React Native</span>
+                                    <span class="skill-percentage">75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="75"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Flutter</span>
+                                    <span class="skill-percentage">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="70"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Kotlin</span>
+                                    <span class="skill-percentage">65%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="65"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Swift</span>
+                                    <span class="skill-percentage">60%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="60"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-cloud skills__category-icon"></i>
+                                <span data-lang="skills-cloud">Cloud & DevOps</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>AWS</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="80"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Azure</span>
+                                    <span class="skill-percentage">75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="75"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Kubernetes</span>
+                                    <span class="skill-percentage">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="70"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Terraform</span>
+                                    <span class="skill-percentage">68%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="68"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-robot skills__category-icon"></i>
+                                <span data-lang="skills-ai">IA & Machine Learning</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>TensorFlow</span>
+                                    <span class="skill-percentage">75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="75"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>PyTorch</span>
+                                    <span class="skill-percentage">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="70"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Scikit-learn</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="80"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>OpenAI API</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-shield-alt skills__category-icon"></i>
+                                <span data-lang="skills-security">Seguridad</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>OAuth 2.0</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>JWT</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>SSL/TLS</span>
+                                    <span class="skill-percentage">75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="75"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>OWASP</span>
+                                    <span class="skill-percentage">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="70"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-chart-line skills__category-icon"></i>
+                                <span data-lang="skills-analytics">Análisis de Datos</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Pandas</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>NumPy</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="80"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Matplotlib</span>
+                                    <span class="skill-percentage">75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="75"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Power BI</span>
+                                    <span class="skill-percentage">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="70"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-code-branch skills__category-icon"></i>
+                                <span data-lang="skills-testing">Testing & QA</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Jest</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Cypress</span>
+                                    <span class="skill-percentage">75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="75"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Selenium</span>
+                                    <span class="skill-percentage">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="70"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Postman</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-tools skills__category-icon"></i>
+                                <span data-lang="skills-build">Build Tools</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Webpack</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Vite</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Rollup</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="80"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Parcel</span>
+                                    <span class="skill-percentage">75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="75"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-code skills__category-icon"></i>
+                                <span data-lang="skills-languages">Lenguajes</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>JavaScript</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="95"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>TypeScript</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>C++</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Go</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="80"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-network-wired skills__category-icon"></i>
+                                <span data-lang="skills-apis">APIs & Servicios</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>REST APIs</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="95"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>GraphQL</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>WebSockets</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="80"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Microservicios</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="88"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-cogs skills__category-icon"></i>
+                                <span data-lang="skills-frameworks">Frameworks</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Express.js</span>
+                                    <span class="skill-percentage">92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="92"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Spring Boot</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="88"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Laravel</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Django</span>
+                                    <span class="skill-percentage">82%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="82"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-paint-brush skills__category-icon"></i>
+                                <span data-lang="skills-design">Diseño & UI</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Figma</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="88"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Adobe XD</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Tailwind CSS</span>
+                                    <span class="skill-percentage">92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="92"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Material-UI</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-rocket skills__category-icon"></i>
+                                <span data-lang="skills-performance">Performance</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Optimización SEO</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="88"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Web Vitals</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Lighthouse</span>
+                                    <span class="skill-percentage">92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="92"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Bundle Optimization</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-project-diagram skills__category-icon"></i>
+                                <span data-lang="skills-architecture">Arquitectura</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Clean Architecture</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="88"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>SOLID Principles</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Design Patterns</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Domain Driven Design</span>
+                                    <span class="skill-percentage">82%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="82"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-sync-alt skills__category-icon"></i>
+                                <span data-lang="skills-cicd">CI/CD & Automation</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>GitHub Actions</span>
+                                    <span class="skill-percentage">92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="92"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Jenkins</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="88"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Terraform</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Ansible</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="80"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-users skills__category-icon"></i>
+                                <span data-lang="skills-collaboration">Colaboración</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Metodologías Ágiles</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Scrum</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="88"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Kanban</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Code Review</span>
+                                    <span class="skill-percentage">92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="92"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills__category">
+                            <h3 class="skills__category-title">
+                                <i class="fas fa-brain skills__category-icon"></i>
+                                <span data-lang="skills-soft">Soft Skills</span>
+                            </h3>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Liderazgo</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="88"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Trabajo en Equipo</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="95"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Comunicación</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Resolución de Problemas</span>
+                                    <span class="skill-percentage">92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="92"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" id="skillsNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="carousel-indicators" id="skillsIndicators">
+                    <!-- Los puntos se generarán dinámicamente -->
+                </div>
+            </div>
+        </section>
+
         <section id="certificados" class="certificates">
             <div class="container">
                 <h2 class="section-title" data-lang="certificados-title">Certificados Profesionales</h2>
+                
+                <!-- Filtros de Certificados -->
+                <div class="certificate-filters">
+                    <button class="filter-btn active" data-filter="all">
+                        <span data-lang="filter-all">Todos</span>
+                        <span class="filter-count">(12)</span>
+                    </button>
+                    <button class="filter-btn" data-filter="web">
+                        <span data-lang="filter-web">Web</span>
+                        <span class="filter-count">(4)</span>
+                    </button>
+                    <button class="filter-btn" data-filter="programming">
+                        <span data-lang="filter-programming">Lenguajes</span>
+                        <span class="filter-count">(4)</span>
+                    </button>
+                    <button class="filter-btn" data-filter="devops">
+                        <span data-lang="filter-devops">DevOps</span>
+                        <span class="filter-count">(4)</span>
+                    </button>
+                </div>
+
                 <div class="certificates__grid">
-                    <div class="certificate__category">
+                    <div class="certificate__category" data-category="web">
                         <h3 class="certificate__title" data-lang="cert-category-1">Desarrollo Web</h3>
                         <div class="certificate__items">
                             <div class="certificate__item">
@@ -1172,7 +2684,7 @@
                         </div>
                     </div>
 
-                    <div class="certificate__category">
+                    <div class="certificate__category" data-category="programming">
                         <h3 class="certificate__title" data-lang="cert-category-2">Lenguajes de Programación</h3>
                         <div class="certificate__items">
                             <div class="certificate__item">
@@ -1194,7 +2706,7 @@
                         </div>
                     </div>
 
-                    <div class="certificate__category">
+                    <div class="certificate__category" data-category="devops">
                         <h3 class="certificate__title" data-lang="cert-category-3">DevOps & Herramientas</h3>
                         <div class="certificate__items">
                             <div class="certificate__item">
@@ -1222,30 +2734,39 @@
         <section id="proyectos" class="projects">
             <div class="container">
                 <h2 class="section-title" data-lang="proyectos-title">Proyectos Destacados</h2>
-                <div class="projects__grid">
-                    <article class="project__card">
-                        <img src="img/Sistemadegestion.jpg" alt="Proyecto Sistema de Gestión Optimizado" class="project__image">
-                        <div class="project__content">
-                            <h3 class="project__title" data-lang="project-1-title">Sistema de Gestión Empresarial</h3>
-                            <p class="project__description" data-lang="project-1-desc">
-                                Desarrollo de una plataforma integral para la gestión de recursos y procesos internos, 
-                                aplicando arquitectura de microservicios y metodologías ágiles. Enfocado en escalabilidad y eficiencia.
-                            </p>
-                            <div class="project__tags">
-                                <span class="project__tag" data-lang="project-1-tag-1">Java</span>
-                                <span class="project__tag" data-lang="project-1-tag-2">Spring Boot</span>
-                                <span class="project__tag" data-lang="project-1-tag-3">Microservicios</span>
-                            </div>
-                        </div>
-                    </article>
+                
+                <!-- Filtros de Proyectos -->
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">
+                        <span data-lang="filter-all">Todos</span>
+                        <span class="filter-count">(14)</span>
+                    </button>
+                    <button class="filter-btn" data-filter="frontend">
+                        <span data-lang="filter-frontend">Frontend</span>
+                        <span class="filter-count">(4)</span>
+                    </button>
+                    <button class="filter-btn" data-filter="backend">
+                        <span data-lang="filter-backend">Backend</span>
+                        <span class="filter-count">(4)</span>
+                    </button>
+                    <button class="filter-btn" data-filter="data">
+                        <span data-lang="filter-data">Data Science</span>
+                        <span class="filter-count">(3)</span>
+                    </button>
+                    <button class="filter-btn" data-filter="devops">
+                        <span data-lang="filter-devops">DevOps</span>
+                        <span class="filter-count">(3)</span>
+                    </button>
+                </div>
 
-                    <article class="project__card">
-                        <img src="img/aplicacionweb.jpg" alt="Proyecto Aplicación Web Interactivo" class="project__image">
+                <div class="projects__grid" data-visible="6">
+                    <!-- Proyectos Frontend -->
+                    <article class="project__card" data-category="frontend">
+                        <img src="img/aplicacionweb.jpg" alt="Aplicación Web React" class="project__image">
                         <div class="project__content">
                             <h3 class="project__title" data-lang="project-2-title">Aplicación Web Interactiva</h3>
                             <p class="project__description" data-lang="project-2-desc">
-                                Plataforma web dinámica con interfaz de usuario moderna, 
-                                optimizada para la experiencia del usuario y desarrollada con enfoque en rendimiento y mantenibilidad.
+                                Plataforma web dinámica con interfaz de usuario moderna, optimizada para la experiencia del usuario.
                             </p>
                             <div class="project__tags">
                                 <span class="project__tag" data-lang="project-2-tag-1">React</span>
@@ -1255,29 +2776,58 @@
                         </div>
                     </article>
 
-                    <article class="project__card">
-                        <img src="img/sistemaderecomendacion.jpg" alt="Proyecto Sistema de Recomendación" class="project__image">
+                    <article class="project__card" data-category="frontend">
+                        <img src="img/aplicacionweb.jpg" alt="Dashboard Vue.js" class="project__image">
                         <div class="project__content">
-                            <h3 class="project__title" data-lang="project-3-title">Sistema de Recomendación</h3>
-                            <p class="project__description" data-lang="project-3-desc">
-                                Implementación de un sistema de recomendación basado en filtrado colaborativo, 
-                                procesando y analizando datos para ofrecer sugerencias personalizadas a los usuarios.
+                            <h3 class="project__title">Dashboard Vue.js</h3>
+                            <p class="project__description">
+                                Panel de administración interactivo con Vue 3, Composition API y gráficos dinámicos.
                             </p>
                             <div class="project__tags">
-                                <span class="project__tag" data-lang="project-3-tag-1">Python</span>
-                                <span class="project__tag" data-lang="project-3-tag-2">ETL</span>
-                                <span class="project__tag" data-lang="project-3-tag-3">Machine Learning Básico</span>
+                                <span class="project__tag">Vue.js</span>
+                                <span class="project__tag">Chart.js</span>
+                                <span class="project__tag">Tailwind</span>
                             </div>
                         </div>
                     </article>
 
-                    <article class="project__card">
-                        <img src="img/desarrollodeapi.jpg" alt="Proyecto API RESTful" class="project__image">
+                    <article class="project__card" data-category="frontend">
+                        <img src="img/aplicacionweb.jpg" alt="E-commerce Frontend" class="project__image">
+                        <div class="project__content">
+                            <h3 class="project__title">E-commerce Frontend</h3>
+                            <p class="project__description">
+                                Tienda online completa con carrito de compras, pagos y gestión de inventario.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">Next.js</span>
+                                <span class="project__tag">Stripe</span>
+                                <span class="project__tag">CSS Modules</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project__card" data-category="frontend">
+                        <img src="img/aplicacionweb.jpg" alt="Portfolio Web" class="project__image">
+                        <div class="project__content">
+                            <h3 class="project__title">Portfolio Interactivo</h3>
+                            <p class="project__description">
+                                Portafolio personal con animaciones CSS, modo oscuro y formulario de contacto.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">HTML5</span>
+                                <span class="project__tag">CSS3</span>
+                                <span class="project__tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proyectos Backend -->
+                    <article class="project__card" data-category="backend">
+                        <img src="img/desarrollodeapi.jpg" alt="API RESTful Node.js" class="project__image">
                         <div class="project__content">
                             <h3 class="project__title" data-lang="project-4-title">API RESTful</h3>
                             <p class="project__description" data-lang="project-4-desc">
-                                Diseño e implementación de una API RESTful robusta y segura, 
-                                con enfoque en buenas prácticas y seguridad.
+                                Diseño e implementación de una API RESTful robusta y segura, con enfoque en buenas prácticas.
                             </p>
                             <div class="project__tags">
                                 <span class="project__tag" data-lang="project-4-tag-1">Node.js</span>
@@ -1287,13 +2837,105 @@
                         </div>
                     </article>
 
-                    <article class="project__card">
-                        <img src="img/pipelinecdci.jpg" alt="Proyecto CI/CD" class="project__image">
+                    <article class="project__card" data-category="backend">
+                        <img src="img/sistemadegestion.jpg" alt="Microservicios Java" class="project__image">
+                        <div class="project__content">
+                            <h3 class="project__title" data-lang="project-1-title">Sistema de Gestión Empresarial</h3>
+                            <p class="project__description" data-lang="project-1-desc">
+                                Desarrollo de una plataforma integral para la gestión de recursos y procesos internos.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag" data-lang="project-1-tag-1">Java</span>
+                                <span class="project__tag" data-lang="project-1-tag-2">Spring Boot</span>
+                                <span class="project__tag" data-lang="project-1-tag-3">Microservicios</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proyectos inicialmente ocultos -->
+                    <article class="project__card" data-category="backend" style="display: none;">
+                        <img src="img/desarrollodeapi.jpg" alt="GraphQL API" class="project__image">
+                        <div class="project__content">
+                            <h3 class="project__title">GraphQL API</h3>
+                            <p class="project__description">
+                                API moderna con GraphQL, Apollo Server y resolvers optimizados para consultas eficientes.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">GraphQL</span>
+                                <span class="project__tag">Apollo</span>
+                                <span class="project__tag">MongoDB</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project__card" data-category="backend" style="display: none;">
+                        <img src="img/desarrollodeapi.jpg" alt="Sistema de Autenticación" class="project__image">
+                        <div class="project__content">
+                            <h3 class="project__title">Sistema de Autenticación</h3>
+                            <p class="project__description">
+                                Servicio completo de autenticación con OAuth 2.0, refresh tokens y seguridad avanzada.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">Python</span>
+                                <span class="project__tag">FastAPI</span>
+                                <span class="project__tag">OAuth 2.0</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proyectos Data Science -->
+                    <article class="project__card" data-category="data" style="display: none;">
+                        <img src="img/sistemaderecomendacion.jpg" alt="Sistema de Recomendación ML" class="project__image">
+                        <div class="project__content">
+                            <h3 class="project__title" data-lang="project-3-title">Sistema de Recomendación</h3>
+                            <p class="project__description" data-lang="project-3-desc">
+                                Implementación de un sistema de recomendación basado en filtrado colaborativo.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag" data-lang="project-3-tag-1">Python</span>
+                                <span class="project__tag" data-lang="project-3-tag-2">ETL</span>
+                                <span class="project__tag" data-lang="project-3-tag-3">Machine Learning Básico</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project__card" data-category="data" style="display: none;">
+                        <img src="img/sistemaderecomendacion.jpg" alt="Dashboard Analytics" class="project__image">
+                        <div class="project__content">
+                            <h3 class="project__title">Dashboard de Analytics</h3>
+                            <p class="project__description">
+                                Visualización de datos en tiempo real con gráficos interactivos y métricas de negocio.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">Python</span>
+                                <span class="project__tag">Streamlit</span>
+                                <span class="project__tag">Plotly</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project__card" data-category="data" style="display: none;">
+                        <img src="img/sistemaderecomendacion.jpg" alt="ETL Pipeline" class="project__image">
+                        <div class="project__content">
+                            <h3 class="project__title">Pipeline ETL</h3>
+                            <p class="project__description">
+                                Proceso automatizado de extracción, transformación y carga de datos con Apache Airflow.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">Python</span>
+                                <span class="project__tag">Airflow</span>
+                                <span class="project__tag">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proyectos DevOps -->
+                    <article class="project__card" data-category="devops" style="display: none;">
+                        <img src="img/pipelinecdci.jpg" alt="Pipeline CI/CD" class="project__image">
                         <div class="project__content">
                             <h3 class="project__title" data-lang="project-5-title">Pipeline CI/CD</h3>
                             <p class="project__description" data-lang="project-5-desc">
-                                Implementación de un pipeline de Integración y Entrega Continua, 
-                                automatizando procesos de desarrollo y despliegue.
+                                Implementación de un pipeline de Integración y Entrega Continua.
                             </p>
                             <div class="project__tags">
                                 <span class="project__tag" data-lang="project-5-tag-1">Git</span>
@@ -1303,21 +2945,360 @@
                         </div>
                     </article>
 
-                    <article class="project__card">
-                        <img src="img/algoritmos.jpg" alt="Proyecto Algoritmos C++" class="project__image">
+                    <article class="project__card" data-category="devops" style="display: none;">
+                        <img src="img/pipelinecdci.jpg" alt="Infraestructura como Código" class="project__image">
                         <div class="project__content">
-                            <h3 class="project__title" data-lang="project-6-title">Implementación de Algoritmos en C++</h3>
-                            <p class="project__description" data-lang="project-6-desc">
-                                Desarrollo de soluciones eficientes para problemas algorítmicos, 
-                                enfocándose en optimización de tiempo y espacio, utilizando características avanzadas del lenguaje C++.
+                            <h3 class="project__title">Infraestructura como Código</h3>
+                            <p class="project__description">
+                                Despliegue automatizado de infraestructura cloud con Terraform y monitoreo integrado.
                             </p>
                             <div class="project__tags">
-                                <span class="project__tag" data-lang="project-6-tag-1">C++</span>
-                                <span class="project__tag" data-lang="project-6-tag-2">Algoritmos</span>
-                                <span class="project__tag" data-lang="project-6-tag-3">Estructuras de Datos</span>
+                                <span class="project__tag">Terraform</span>
+                                <span class="project__tag">AWS</span>
+                                <span class="project__tag">Kubernetes</span>
                             </div>
                         </div>
                     </article>
+
+                    <article class="project__card" data-category="devops" style="display: none;">
+                        <img src="img/algoritmos.jpg" alt="Sistema de Monitoreo" class="project__image">
+                        <div class="project__content">
+                            <h3 class="project__title">Sistema de Monitoreo</h3>
+                            <p class="project__description">
+                                Stack completo de observabilidad con métricas, logs y alertas para aplicaciones.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">Prometheus</span>
+                                <span class="project__tag">Grafana</span>
+                                <span class="project__tag">ELK Stack</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Botón Ver más -->
+                <div class="projects__actions">
+                    <button class="load-more-btn" id="loadMoreProjects">
+                        <span data-lang="load-more">Ver más proyectos</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="services">
+            <div class="container">
+                <h2 class="section-title" data-lang="servicios-title">¿Qué Ofrezco?</h2>
+                <div class="services__grid">
+                    <div class="service-card">
+                        <i class="fas fa-laptop-code service-icon"></i>
+                        <h3 class="service-title" data-lang="service-1-title">Desarrollo Frontend</h3>
+                        <p class="service-description" data-lang="service-1-desc">
+                            Creación de interfaces modernas y responsivas usando React, TypeScript y las últimas tecnologías frontend. 
+                            Enfoque en experiencia de usuario excepcional y rendimiento optimizado.
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <i class="fas fa-server service-icon"></i>
+                        <h3 class="service-title" data-lang="service-2-title">Desarrollo Backend</h3>
+                        <p class="service-description" data-lang="service-2-desc">
+                            Desarrollo de APIs robustas y escalables con Node.js, Python y Java. 
+                            Arquitectura de microservicios, bases de datos optimizadas y integración de servicios.
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <i class="fas fa-chart-line service-icon"></i>
+                        <h3 class="service-title" data-lang="service-3-title">Consultoría Técnica</h3>
+                        <p class="service-description" data-lang="service-3-desc">
+                            Asesoramiento en arquitectura de software, selección de tecnologías y optimización de procesos. 
+                            Análisis de rendimiento y mejores prácticas de desarrollo.
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <i class="fas fa-cogs service-icon"></i>
+                        <h3 class="service-title" data-lang="service-4-title">Automatización de Procesos</h3>
+                        <p class="service-description" data-lang="service-4-desc">
+                            Implementación de pipelines CI/CD, automatización de despliegues y configuración de infraestructura. 
+                            Docker, Kubernetes y herramientas DevOps.
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <i class="fas fa-database service-icon"></i>
+                        <h3 class="service-title" data-lang="service-5-title">Gestión de Bases de Datos</h3>
+                        <p class="service-description" data-lang="service-5-desc">
+                            Diseño, optimización y administración de bases de datos relacionales y NoSQL. 
+                            Modelado de datos, consultas eficientes y estrategias de backup.
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <i class="fas fa-mobile-alt service-icon"></i>
+                        <h3 class="service-title" data-lang="service-6-title">Desarrollo Móvil</h3>
+                        <p class="service-description" data-lang="service-6-desc">
+                            Creación de aplicaciones móviles nativas y multiplataforma. 
+                            React Native, Flutter y desarrollo de apps responsivas para iOS y Android.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proceso" class="workflow-timeline">
+            <div class="container">
+                <h2 class="section-title" data-lang="proceso-title">Mi Proceso de Trabajo</h2>
+                <p class="workflow-subtitle" data-lang="proceso-subtitle">
+                    Un enfoque estructurado y probado para entregar proyectos de alta calidad
+                </p>
+                
+                <div class="timeline">
+                    <!-- Fase 1: Análisis y Planificación -->
+                    <div class="timeline-item" data-phase="1">
+                        <div class="timeline-marker">
+                            <div class="timeline-number">1</div>
+                            <div class="timeline-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-header" onclick="togglePhase(1)">
+                                <h3 class="timeline-title" data-lang="proceso-1-title">Análisis y Planificación</h3>
+                                <div class="timeline-meta">
+                                    <span class="timeline-duration" data-lang="proceso-1-duration">1-2 semanas</span>
+                                    <span class="timeline-complexity complexity-medium" data-lang="proceso-1-complexity">Media</span>
+                                    <i class="fas fa-chevron-down timeline-toggle"></i>
+                                </div>
+                            </div>
+                            <p class="timeline-description" data-lang="proceso-1-desc">
+                                Entendimiento profundo de los requisitos, análisis de factibilidad y definición de arquitectura técnica.
+                            </p>
+                            <div class="timeline-details" id="phase-1-details">
+                                <div class="timeline-steps">
+                                    <h4 data-lang="proceso-1-steps-title">Pasos clave:</h4>
+                                    <ul>
+                                        <li data-lang="proceso-1-step-1">Levantamiento detallado de requisitos</li>
+                                        <li data-lang="proceso-1-step-2">Análisis de factibilidad técnica y económica</li>
+                                        <li data-lang="proceso-1-step-3">Definición de arquitectura del sistema</li>
+                                        <li data-lang="proceso-1-step-4">Estimación de recursos y cronograma</li>
+                                        <li data-lang="proceso-1-step-5">Identificación de riesgos técnicos</li>
+                                    </ul>
+                                </div>
+                                <div class="timeline-tools">
+                                    <h4 data-lang="proceso-tools-title">Herramientas:</h4>
+                                    <div class="tools-list">
+                                        <span class="tool-tag">Figma</span>
+                                        <span class="tool-tag">Draw.io</span>
+                                        <span class="tool-tag">Notion</span>
+                                        <span class="tool-tag">Miro</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 2: Diseño y Prototipado -->
+                    <div class="timeline-item" data-phase="2">
+                        <div class="timeline-marker">
+                            <div class="timeline-number">2</div>
+                            <div class="timeline-icon">
+                                <i class="fas fa-pencil-ruler"></i>
+                            </div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-header" onclick="togglePhase(2)">
+                                <h3 class="timeline-title" data-lang="proceso-2-title">Diseño y Prototipado</h3>
+                                <div class="timeline-meta">
+                                    <span class="timeline-duration" data-lang="proceso-2-duration">1-3 semanas</span>
+                                    <span class="timeline-complexity complexity-high" data-lang="proceso-2-complexity">Alta</span>
+                                    <i class="fas fa-chevron-down timeline-toggle"></i>
+                                </div>
+                            </div>
+                            <p class="timeline-description" data-lang="proceso-2-desc">
+                                Creación de mockups, definición de flujos de usuario y prototipado de funcionalidades clave.
+                            </p>
+                            <div class="timeline-details" id="phase-2-details">
+                                <div class="timeline-steps">
+                                    <h4 data-lang="proceso-2-steps-title">Pasos clave:</h4>
+                                    <ul>
+                                        <li data-lang="proceso-2-step-1">Wireframes y arquitectura de información</li>
+                                        <li data-lang="proceso-2-step-2">Diseño de interfaz de usuario (UI)</li>
+                                        <li data-lang="proceso-2-step-3">Experiencia de usuario (UX) y flujos</li>
+                                        <li data-lang="proceso-2-step-4">Prototipo interactivo clickeable</li>
+                                        <li data-lang="proceso-2-step-5">Revisión y validación con stakeholders</li>
+                                    </ul>
+                                </div>
+                                <div class="timeline-tools">
+                                    <h4 data-lang="proceso-tools-title">Herramientas:</h4>
+                                    <div class="tools-list">
+                                        <span class="tool-tag">Figma</span>
+                                        <span class="tool-tag">Adobe XD</span>
+                                        <span class="tool-tag">InVision</span>
+                                        <span class="tool-tag">Sketch</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 3: Desarrollo Iterativo -->
+                    <div class="timeline-item" data-phase="3">
+                        <div class="timeline-marker">
+                            <div class="timeline-number">3</div>
+                            <div class="timeline-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-header" onclick="togglePhase(3)">
+                                <h3 class="timeline-title" data-lang="proceso-3-title">Desarrollo Iterativo</h3>
+                                <div class="timeline-meta">
+                                    <span class="timeline-duration" data-lang="proceso-3-duration">3-8 semanas</span>
+                                    <span class="timeline-complexity complexity-high" data-lang="proceso-3-complexity">Alta</span>
+                                    <i class="fas fa-chevron-down timeline-toggle"></i>
+                                </div>
+                            </div>
+                            <p class="timeline-description" data-lang="proceso-3-desc">
+                                Desarrollo ágil con entregas incrementales, code reviews constantes y testing automatizado.
+                            </p>
+                            <div class="timeline-details" id="phase-3-details">
+                                <div class="timeline-steps">
+                                    <h4 data-lang="proceso-3-steps-title">Pasos clave:</h4>
+                                    <ul>
+                                        <li data-lang="proceso-3-step-1">Sprint planning y división de tareas</li>
+                                        <li data-lang="proceso-3-step-2">Desarrollo por módulos y componentes</li>
+                                        <li data-lang="proceso-3-step-3">Testing unitario y de integración</li>
+                                        <li data-lang="proceso-3-step-4">Code reviews y refactoring continuo</li>
+                                        <li data-lang="proceso-3-step-5">Demos regulares y feedback loops</li>
+                                    </ul>
+                                </div>
+                                <div class="timeline-tools">
+                                    <h4 data-lang="proceso-tools-title">Herramientas:</h4>
+                                    <div class="tools-list">
+                                        <span class="tool-tag">Git</span>
+                                        <span class="tool-tag">VS Code</span>
+                                        <span class="tool-tag">Jest</span>
+                                        <span class="tool-tag">SonarQube</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 4: Testing y QA -->
+                    <div class="timeline-item" data-phase="4">
+                        <div class="timeline-marker">
+                            <div class="timeline-number">4</div>
+                            <div class="timeline-icon">
+                                <i class="fas fa-bug"></i>
+                            </div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-header" onclick="togglePhase(4)">
+                                <h3 class="timeline-title" data-lang="proceso-4-title">Testing y QA</h3>
+                                <div class="timeline-meta">
+                                    <span class="timeline-duration" data-lang="proceso-4-duration">1-2 semanas</span>
+                                    <span class="timeline-complexity complexity-medium" data-lang="proceso-4-complexity">Media</span>
+                                    <i class="fas fa-chevron-down timeline-toggle"></i>
+                                </div>
+                            </div>
+                            <p class="timeline-description" data-lang="proceso-4-desc">
+                                Testing exhaustivo, optimización de performance y aseguramiento de calidad antes del lanzamiento.
+                            </p>
+                            <div class="timeline-details" id="phase-4-details">
+                                <div class="timeline-steps">
+                                    <h4 data-lang="proceso-4-steps-title">Pasos clave:</h4>
+                                    <ul>
+                                        <li data-lang="proceso-4-step-1">Testing funcional y de usabilidad</li>
+                                        <li data-lang="proceso-4-step-2">Testing de performance y carga</li>
+                                        <li data-lang="proceso-4-step-3">Testing de seguridad y vulnerabilidades</li>
+                                        <li data-lang="proceso-4-step-4">Testing cross-browser y responsivo</li>
+                                        <li data-lang="proceso-4-step-5">Documentación técnica y de usuario</li>
+                                    </ul>
+                                </div>
+                                <div class="timeline-tools">
+                                    <h4 data-lang="proceso-tools-title">Herramientas:</h4>
+                                    <div class="tools-list">
+                                        <span class="tool-tag">Jest</span>
+                                        <span class="tool-tag">Cypress</span>
+                                        <span class="tool-tag">Postman</span>
+                                        <span class="tool-tag">Lighthouse</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 5: Despliegue y Monitoreo -->
+                    <div class="timeline-item" data-phase="5">
+                        <div class="timeline-marker">
+                            <div class="timeline-number">5</div>
+                            <div class="timeline-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-header" onclick="togglePhase(5)">
+                                <h3 class="timeline-title" data-lang="proceso-5-title">Despliegue y Monitoreo</h3>
+                                <div class="timeline-meta">
+                                    <span class="timeline-duration" data-lang="proceso-5-duration">1 semana + soporte</span>
+                                    <span class="timeline-complexity complexity-medium" data-lang="proceso-5-complexity">Media</span>
+                                    <i class="fas fa-chevron-down timeline-toggle"></i>
+                                </div>
+                            </div>
+                            <p class="timeline-description" data-lang="proceso-5-desc">
+                                Despliegue automatizado, configuración de monitoreo y soporte post-lanzamiento continuo.
+                            </p>
+                            <div class="timeline-details" id="phase-5-details">
+                                <div class="timeline-steps">
+                                    <h4 data-lang="proceso-5-steps-title">Pasos clave:</h4>
+                                    <ul>
+                                        <li data-lang="proceso-5-step-1">Configuración de pipeline CI/CD</li>
+                                        <li data-lang="proceso-5-step-2">Despliegue a producción con rollback</li>
+                                        <li data-lang="proceso-5-step-3">Configuración de monitoreo y alertas</li>
+                                        <li data-lang="proceso-5-step-4">Documentación de operaciones</li>
+                                        <li data-lang="proceso-5-step-5">Soporte post-lanzamiento y mantenimiento</li>
+                                    </ul>
+                                </div>
+                                <div class="timeline-tools">
+                                    <h4 data-lang="proceso-tools-title">Herramientas:</h4>
+                                    <div class="tools-list">
+                                        <span class="tool-tag">Docker</span>
+                                        <span class="tool-tag">AWS</span>
+                                        <span class="tool-tag">Jenkins</span>
+                                        <span class="tool-tag">Grafana</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estadísticas del proceso -->
+                <div class="workflow-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-clock stat-icon"></i>
+                        <div class="stat-content">
+                            <h4 class="stat-number" data-lang="proceso-stat-time">6-16</h4>
+                            <p class="stat-label" data-lang="proceso-stat-time-label">Semanas promedio</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-check-circle stat-icon"></i>
+                        <div class="stat-content">
+                            <h4 class="stat-number" data-lang="proceso-stat-success">98%</h4>
+                            <p class="stat-label" data-lang="proceso-stat-success-label">Tasa de éxito</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users stat-icon"></i>
+                        <div class="stat-content">
+                            <h4 class="stat-number" data-lang="proceso-stat-clients">15+</h4>
+                            <p class="stat-label" data-lang="proceso-stat-clients-label">Proyectos completados</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1442,6 +3423,33 @@
             });
         });
 
+        // Animación de barras de progreso
+        const animateSkillBars = () => {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const skillsSection = document.getElementById('habilidades');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        skillBars.forEach(bar => {
+                            const progress = bar.getAttribute('data-progress');
+                            bar.style.width = progress + '%';
+                        });
+                        observer.unobserve(skillsSection);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            if (skillsSection) {
+                observer.observe(skillsSection);
+            }
+        };
+
+        // Inicializar animaciones después de cargar
+        window.addEventListener('load', () => {
+            animateSkillBars();
+        });
+
         // Animación de escritura para el subtítulo
         const subtitleElement = document.getElementById('heroSubtitle');
         let phrases = []; // Mover la declaración aquí para que sea accesible globalmente o por la función
@@ -1482,31 +3490,25 @@
                 const delayAfterTypingComplete = 1000; // Pausa de 1 segundo antes de borrar
 
                 if (!isDeleting && charIndex < currentPhrase.length) {
-                    console.log(`Escribiendo: ${displayedText} (charIndex: ${charIndex})`);
                     charIndex++;
                     window.typingTimeout = setTimeout(type, typingSpeed);
                 } else if (isDeleting && charIndex > 0) {
-                    console.log(`Borrando: ${displayedText} (charIndex: ${charIndex})`);
                     charIndex--;
                     window.typingTimeout = setTimeout(type, typingSpeed);
                 } else {
                     // Si terminó de escribir, pausar antes de borrar
                     if (!isDeleting && charIndex === currentPhrase.length) {
-                        console.log(`Terminó de escribir. Pausando por ${delayAfterTypingComplete}ms.`);
                         window.typingTimeout = setTimeout(() => {
                             isDeleting = true;
-                            console.log('Iniciando borrado...');
                             type(); // Iniciar borrado después de la pausa
                         }, delayAfterTypingComplete);
                     }
                     // Si terminó de borrar, pausar antes de escribir la siguiente frase
                     else if (isDeleting && charIndex === 0) {
-                        console.log(`Terminó de borrar. Iniciando la siguiente frase inmediatamente.`);
                         window.typingTimeout = setTimeout(() => {
                             isDeleting = false;
                             phraseIndex = (phraseIndex + 1) % phrases.length;
                             charIndex = 0;
-                            console.log('Iniciando escritura de la siguiente frase...');
                             type(); // Iniciar escritura de la siguiente frase después de la pausa
                         }, 30); // Tiempo mínimo para una transición fluida
                     }
@@ -1611,9 +3613,9 @@
             // Asegurarse de que los elementos existan
             if (proactiveAssistant && proactiveMessage) {
                 let showTimeout; // Para el temporizador de mostrar
-                let hideTimeout; // Para el temporador de ocultar automáticamente
-                let repeatTimeout; // Para el temporador de repetición
-                let messageTimeout; // Para el temporador de cambio de mensaje
+                let hideTimeout; // Para el temporizador de ocultar automáticamente
+                let repeatTimeout; // Para el temporizador de repetición
+                let messageTimeout; // Para el temporizador de cambio de mensaje
 
                 const initialDelay = 8000; // 8 segundos antes de mostrar por primera vez
                 const displayDuration = 15000; // 15 segundos que el mensaje permanece visible
@@ -1664,7 +3666,7 @@
                     }
                 };
 
-                // Iniciar el temporador inicial al cargar la página
+                // Iniciar el temporizador inicial al cargar la página
                 showTimeout = setTimeout(showProactiveAssistant, initialDelay);
             }
         });
@@ -1674,13 +3676,40 @@
             es: {
                 'inicio': 'Inicio',
                 'sobre-mi': 'Sobre Mí',
+                'portafolio': 'Portafolio',
                 'certificados': 'Certificados',
                 'proyectos': 'Proyectos',
+                'proceso': 'Proceso',
                 'contacto': 'Contacto',
                 'hero-title': 'Ingeniero de Software',
                 'hero-subtitle': 'Desarrollando soluciones innovadoras con pasión y dedicación',
+                'hero-name': 'Piero Valdez',
+                'hero-role': 'Ingeniero de Software y Desarrollador Full Stack',
+                'hero-description': 'Creando experiencias digitales excepcionales con código limpio y diseño intuitivo. Especializado en desarrollo web moderno y arquitecturas escalables.',
+                'hero-scroll': 'Explora mi trabajo',
                 'scroll': 'Scroll',
                 'sobre-mi-title': 'Sobre Mí',
+                'habilidades-title': 'Habilidades Técnicas',
+                'skills-frontend': 'Frontend',
+                'skills-backend': 'Backend',
+                'skills-database': 'Base de Datos',
+                'skills-tools': 'Herramientas',
+                'skills-mobile': 'Desarrollo Móvil',
+                'skills-cloud': 'Cloud & DevOps',
+                'skills-ai': 'IA & Machine Learning',
+                'skills-security': 'Seguridad',
+                'skills-analytics': 'Análisis de Datos',
+                'skills-testing': 'Testing & QA',
+                'skills-build': 'Build Tools',
+                'skills-languages': 'Lenguajes',
+                'skills-apis': 'APIs & Servicios',
+                'skills-frameworks': 'Frameworks',
+                'skills-design': 'Diseño & UI',
+                'skills-performance': 'Performance',
+                'skills-architecture': 'Arquitectura',
+                'skills-cicd': 'CI/CD & Automation',
+                'skills-collaboration': 'Colaboración',
+                'skills-soft': 'Soft Skills',
                 'sobre-mi-content': 'Soy un estudiante proactivo de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas (UPC), actualmente cursando mi segundo año. Mi trayectoria combina una sólida base académica con la adquisición continua de conocimientos a través de certificaciones en tecnologías y metodologías clave del desarrollo de software. Busco activamente oportunidades para aplicar y expandir mis habilidades en entornos profesionales.',
                 'stat-experience': 'Años de Estudio',
                 'stat-projects': 'Certificados',
@@ -1732,6 +3761,78 @@
                 'project-6-tag-1': 'C++',
                 'project-6-tag-2': 'Algoritmos',
                 'project-6-tag-3': 'Estructuras de Datos',
+                'servicios-title': '¿Qué Ofrezco?',
+                'service-1-title': 'Desarrollo Frontend',
+                'service-1-desc': 'Creación de interfaces modernas y responsivas usando React, TypeScript y las últimas tecnologías frontend. Enfoque en experiencia de usuario excepcional y rendimiento optimizado.',
+                'service-2-title': 'Desarrollo Backend',
+                'service-2-desc': 'Desarrollo de APIs robustas y escalables con Node.js, Python y Java. Arquitectura de microservicios, bases de datos optimizadas y integración de servicios.',
+                'service-3-title': 'Consultoría Técnica',
+                'service-3-desc': 'Asesoramiento en arquitectura de software, selección de tecnologías y optimización de procesos. Análisis de rendimiento y mejores prácticas de desarrollo.',
+                'service-4-title': 'Automatización de Procesos',
+                'service-4-desc': 'Implementación de pipelines CI/CD, automatización de despliegues y configuración de infraestructura. Docker, Kubernetes y herramientas DevOps.',
+                'service-5-title': 'Gestión de Bases de Datos',
+                'service-5-desc': 'Diseño, optimización y administración de bases de datos relacionales y NoSQL. Modelado de datos, consultas eficientes y estrategias de backup.',
+                'service-6-title': 'Desarrollo Móvil',
+                'service-6-desc': 'Creación de aplicaciones móviles nativas y multiplataforma. React Native, Flutter y desarrollo de apps responsivas para iOS y Android.',
+                'proceso-title': 'Mi Proceso de Trabajo',
+                'proceso-subtitle': 'Un enfoque estructurado y probado para entregar proyectos de alta calidad',
+                'proceso-1-title': 'Análisis y Planificación',
+                'proceso-1-duration': '1-2 semanas',
+                'proceso-1-complexity': 'Media',
+                'proceso-1-desc': 'Entendimiento profundo de los requisitos, análisis de factibilidad y definición de arquitectura técnica.',
+                'proceso-1-steps-title': 'Pasos clave:',
+                'proceso-1-step-1': 'Levantamiento detallado de requisitos',
+                'proceso-1-step-2': 'Análisis de factibilidad técnica y económica',
+                'proceso-1-step-3': 'Definición de arquitectura del sistema',
+                'proceso-1-step-4': 'Estimación de recursos y cronograma',
+                'proceso-1-step-5': 'Identificación de riesgos técnicos',
+                'proceso-2-title': 'Diseño y Prototipado',
+                'proceso-2-duration': '1-3 semanas',
+                'proceso-2-complexity': 'Alta',
+                'proceso-2-desc': 'Creación de mockups, definición de flujos de usuario y prototipado de funcionalidades clave.',
+                'proceso-2-steps-title': 'Pasos clave:',
+                'proceso-2-step-1': 'Wireframes y arquitectura de información',
+                'proceso-2-step-2': 'Diseño de interfaz de usuario (UI)',
+                'proceso-2-step-3': 'Experiencia de usuario (UX) y flujos',
+                'proceso-2-step-4': 'Prototipo interactivo clickeable',
+                'proceso-2-step-5': 'Revisión y validación con stakeholders',
+                'proceso-3-title': 'Desarrollo Iterativo',
+                'proceso-3-duration': '3-8 semanas',
+                'proceso-3-complexity': 'Alta',
+                'proceso-3-desc': 'Desarrollo ágil con entregas incrementales, code reviews constantes y testing automatizado.',
+                'proceso-3-steps-title': 'Pasos clave:',
+                'proceso-3-step-1': 'Sprint planning y división de tareas',
+                'proceso-3-step-2': 'Desarrollo por módulos y componentes',
+                'proceso-3-step-3': 'Testing unitario y de integración',
+                'proceso-3-step-4': 'Code reviews y refactoring continuo',
+                'proceso-3-step-5': 'Demos regulares y feedback loops',
+                'proceso-4-title': 'Testing y QA',
+                'proceso-4-duration': '1-2 semanas',
+                'proceso-4-complexity': 'Media',
+                'proceso-4-desc': 'Testing exhaustivo, optimización de performance y aseguramiento de calidad antes del lanzamiento.',
+                'proceso-4-steps-title': 'Pasos clave:',
+                'proceso-4-step-1': 'Testing funcional y de usabilidad',
+                'proceso-4-step-2': 'Testing de performance y carga',
+                'proceso-4-step-3': 'Testing de seguridad y vulnerabilidades',
+                'proceso-4-step-4': 'Testing cross-browser y responsivo',
+                'proceso-4-step-5': 'Documentación técnica y de usuario',
+                'proceso-5-title': 'Despliegue y Monitoreo',
+                'proceso-5-duration': '1 semana + soporte',
+                'proceso-5-complexity': 'Media',
+                'proceso-5-desc': 'Despliegue automatizado, configuración de monitoreo y soporte post-lanzamiento continuo.',
+                'proceso-5-steps-title': 'Pasos clave:',
+                'proceso-5-step-1': 'Configuración de pipeline CI/CD',
+                'proceso-5-step-2': 'Despliegue a producción con rollback',
+                'proceso-5-step-3': 'Configuración de monitoreo y alertas',
+                'proceso-5-step-4': 'Documentación de operaciones',
+                'proceso-5-step-5': 'Soporte post-lanzamiento y mantenimiento',
+                'proceso-tools-title': 'Herramientas:',
+                'proceso-stat-time': '6-16',
+                'proceso-stat-time-label': 'Semanas promedio',
+                'proceso-stat-success': '98%',
+                'proceso-stat-success-label': 'Tasa de éxito',
+                'proceso-stat-clients': '15+',
+                'proceso-stat-clients-label': 'Proyectos completados',
                 'contacto-title': 'Contacto',
                 'contacto-info-title': 'Información de Contacto',
                 'contacto-info-text': 'Estoy disponible para oportunidades profesionales y colaboraciones. No dudes en contactarme a través de cualquiera de los siguientes medios.',
@@ -1751,6 +3852,13 @@
                 'form-error': 'Ocurrió un error al enviar el mensaje. Por favor, inténtalo de nuevo.',
                 'filter-all': 'Todos',
                 'filter-web': 'Web',
+                'filter-programming': 'Lenguajes',
+                'filter-devops': 'DevOps',
+                'filter-frontend': 'Frontend',
+                'filter-backend': 'Backend',
+                'filter-data': 'Data Science',
+                'load-more': 'Ver más proyectos',
+                'filter-web': 'Web',
                 'filter-mobile': 'Móvil',
                 'filter-desktop': 'Escritorio',
                 'message-label': 'Mensaje'
@@ -1758,13 +3866,40 @@
             en: {
                 'inicio': 'Home',
                 'sobre-mi': 'About Me',
+                'portafolio': 'Portfolio',
                 'certificados': 'Certificates',
                 'proyectos': 'Projects',
+                'proceso': 'Process',
                 'contacto': 'Contact',
                 'hero-title': 'Software Engineer',
                 'hero-subtitle': 'Developing innovative solutions with passion and dedication',
+                'hero-name': 'Piero Valdez',
+                'hero-role': 'Software Engineer & Full Stack Developer',
+                'hero-description': 'Creating exceptional digital experiences with clean code and intuitive design. Specialized in modern web development and scalable architectures.',
+                'hero-scroll': 'Explore my work',
                 'scroll': 'Scroll',
                 'sobre-mi-title': 'About Me',
+                'habilidades-title': 'Technical Skills',
+                'skills-frontend': 'Frontend',
+                'skills-backend': 'Backend',
+                'skills-database': 'Database',
+                'skills-tools': 'Tools',
+                'skills-mobile': 'Mobile Development',
+                'skills-cloud': 'Cloud & DevOps',
+                'skills-ai': 'AI & Machine Learning',
+                'skills-security': 'Security',
+                'skills-analytics': 'Data Analysis',
+                'skills-testing': 'Testing & QA',
+                'skills-build': 'Build Tools',
+                'skills-languages': 'Languages',
+                'skills-apis': 'APIs & Services',
+                'skills-frameworks': 'Frameworks',
+                'skills-design': 'Design & UI',
+                'skills-performance': 'Performance',
+                'skills-architecture': 'Architecture',
+                'skills-cicd': 'CI/CD & Automation',
+                'skills-collaboration': 'Collaboration',
+                'skills-soft': 'Soft Skills',
                 'sobre-mi-content': 'I am a proactive Software Engineering student at the Peruvian University of Applied Sciences (UPC), currently in my second year. My journey combines a solid academic foundation with continuous knowledge acquisition through certifications in key software development technologies and methodologies. I actively seek opportunities to apply and expand my skills in professional environments.',
                 'stat-experience': 'Years of Study',
                 'stat-projects': 'Certificates',
@@ -1785,6 +3920,78 @@
                 'cert-10-title': 'Professional Git',
                 'cert-11-title': 'ETL with Python',
                 'cert-12-title': 'Airflow',
+                'servicios-title': 'Services',
+                'service-1-title': 'Web Development',
+                'service-1-desc': 'Creation of modern and responsive web applications using the latest technologies and frameworks.',
+                'service-2-title': 'API Development',
+                'service-2-desc': 'Design and development of robust and secure RESTful APIs for various applications.',
+                'service-3-title': 'Data Analysis',
+                'service-3-desc': 'Analysis and visualization of complex data to extract valuable insights for decision making.',
+                'service-4-title': 'Recommendation Systems',
+                'service-4-desc': 'Development of intelligent systems that provide personalized recommendations based on user behavior.',
+                'service-5-title': 'Database Management',
+                'service-5-desc': 'Design, optimization and administration of relational and NoSQL databases for optimal performance.',
+                'service-6-title': 'Mobile Development',
+                'service-6-desc': 'Creation of native and cross-platform mobile applications with modern and intuitive interfaces.',
+                'proceso-title': 'My Work Process',
+                'proceso-subtitle': 'A structured and proven approach to deliver high-quality projects',
+                'proceso-1-title': 'Analysis and Planning',
+                'proceso-1-duration': '1-2 weeks',
+                'proceso-1-complexity': 'Medium',
+                'proceso-1-desc': 'Deep understanding of requirements, feasibility analysis and technical architecture definition.',
+                'proceso-1-steps-title': 'Key steps:',
+                'proceso-1-step-1': 'Detailed requirements gathering',
+                'proceso-1-step-2': 'Technical and economic feasibility analysis',
+                'proceso-1-step-3': 'System architecture definition',
+                'proceso-1-step-4': 'Resource and timeline estimation',
+                'proceso-1-step-5': 'Technical risk identification',
+                'proceso-2-title': 'Design and Prototyping',
+                'proceso-2-duration': '1-3 weeks',
+                'proceso-2-complexity': 'High',
+                'proceso-2-desc': 'Creation of mockups, user flow definition and prototyping of key functionalities.',
+                'proceso-2-steps-title': 'Key steps:',
+                'proceso-2-step-1': 'Wireframes and information architecture',
+                'proceso-2-step-2': 'User interface (UI) design',
+                'proceso-2-step-3': 'User experience (UX) and flows',
+                'proceso-2-step-4': 'Interactive clickable prototype',
+                'proceso-2-step-5': 'Review and validation with stakeholders',
+                'proceso-3-title': 'Iterative Development',
+                'proceso-3-duration': '3-8 weeks',
+                'proceso-3-complexity': 'High',
+                'proceso-3-desc': 'Agile development with incremental deliveries, constant code reviews and automated testing.',
+                'proceso-3-steps-title': 'Key steps:',
+                'proceso-3-step-1': 'Sprint planning and task division',
+                'proceso-3-step-2': 'Development by modules and components',
+                'proceso-3-step-3': 'Unit and integration testing',
+                'proceso-3-step-4': 'Continuous code reviews and refactoring',
+                'proceso-3-step-5': 'Regular demos and feedback loops',
+                'proceso-4-title': 'Testing and QA',
+                'proceso-4-duration': '1-2 weeks',
+                'proceso-4-complexity': 'Medium',
+                'proceso-4-desc': 'Comprehensive testing, performance optimization and quality assurance before launch.',
+                'proceso-4-steps-title': 'Key steps:',
+                'proceso-4-step-1': 'Functional and usability testing',
+                'proceso-4-step-2': 'Performance and load testing',
+                'proceso-4-step-3': 'Security and vulnerability testing',
+                'proceso-4-step-4': 'Cross-browser and responsive testing',
+                'proceso-4-step-5': 'Technical and user documentation',
+                'proceso-5-title': 'Deployment and Monitoring',
+                'proceso-5-duration': '1 week + support',
+                'proceso-5-complexity': 'Medium',
+                'proceso-5-desc': 'Automated deployment, monitoring configuration and continuous post-launch support.',
+                'proceso-5-steps-title': 'Key steps:',
+                'proceso-5-step-1': 'CI/CD pipeline configuration',
+                'proceso-5-step-2': 'Production deployment with rollback',
+                'proceso-5-step-3': 'Monitoring and alerts configuration',
+                'proceso-5-step-4': 'Operations documentation',
+                'proceso-5-step-5': 'Post-launch support and maintenance',
+                'proceso-tools-title': 'Tools:',
+                'proceso-stat-time': '6-16',
+                'proceso-stat-time-label': 'Average weeks',
+                'proceso-stat-success': '98%',
+                'proceso-stat-success-label': 'Success rate',
+                'proceso-stat-clients': '15+',
+                'proceso-stat-clients-label': 'Completed projects',
                 'proyectos-title': 'Featured Projects',
                 'project-1-title': 'Enterprise Management System',
                 'project-1-desc': 'Development of a comprehensive platform for resource and internal process management, applying microservices architecture and agile methodologies. Focused on scalability and efficiency.',
@@ -1834,6 +4041,13 @@
                 'explore-portfolio': 'Write me :)',
                 'form-error': 'An error occurred while sending the message. Please try again.',
                 'filter-all': 'All',
+                'filter-web': 'Web',
+                'filter-programming': 'Languages',
+                'filter-devops': 'DevOps',
+                'filter-frontend': 'Frontend',
+                'filter-backend': 'Backend',
+                'filter-data': 'Data Science',
+                'load-more': 'Load more projects',
                 'filter-web': 'Web',
                 'filter-mobile': 'Mobile',
                 'filter-desktop': 'Desktop',
@@ -1917,29 +4131,6 @@
             setTheme(currentTheme === 'dark' ? 'light' : 'dark');
         });
 
-        // Filtrado de proyectos
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project__card');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const filter = button.getAttribute('data-filter');
-                
-                // Actualizar botones activos
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                // Filtrar proyectos
-                projectCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
         // Indicador de progreso de carga
         const progressBar = document.querySelector('.progress-bar');
         window.addEventListener('scroll', () => {
@@ -1975,6 +4166,583 @@
         document.addEventListener('mousedown', () => {
             document.body.classList.remove('keyboard-navigation');
         });
+
+        // Skills Carousel Functionality
+        class SkillsCarousel {
+            constructor() {
+                this.carousel = document.getElementById('skillsCarousel');
+                this.prevBtn = document.getElementById('skillsPrev');
+                this.nextBtn = document.getElementById('skillsNext');
+                this.indicators = document.getElementById('skillsIndicators');
+                
+                if (!this.carousel) return;
+                
+                this.cards = Array.from(document.querySelectorAll('.skills__category'));
+                this.cardWidth = 300; // 280px + 20px gap
+                this.cardsPerView = 4; // Mostrar 4 cards a la vez
+                this.currentIndex = 0;
+                this.isTransitioning = false;
+                this.autoScrollSpeed = 0.5; // Velocidad más lenta y refinada (pixels por frame)
+                this.animationFrame = null;
+                this.scrollPosition = 0;
+                
+                this.init();
+            }
+
+            init() {
+                this.setupInfiniteClones();
+                this.setupCarousel();
+                this.bindEvents();
+                this.startAutoScroll();
+            }
+
+            setupInfiniteClones() {
+                // Crear suficientes clones para scroll infinito suave
+                const totalClones = this.cards.length * 3; // Triple para loop suave
+                
+                // Limpiar carousel
+                this.carousel.innerHTML = '';
+                
+                // Crear array con todas las cards (originales + clones)
+                this.allCards = [];
+                
+                for (let i = 0; i < totalClones; i++) {
+                    const originalIndex = i % this.cards.length;
+                    const clone = this.cards[originalIndex].cloneNode(true);
+                    clone.classList.add('clone');
+                    clone.style.flex = `0 0 ${this.cardWidth}px`;
+                    this.carousel.appendChild(clone);
+                    this.allCards.push(clone);
+                }
+                
+                // Posición inicial en el centro del loop
+                this.scrollPosition = this.cards.length * this.cardWidth;
+                this.updateCarouselPosition(false);
+            }
+
+            setupCarousel() {
+                this.carousel.style.display = 'flex';
+                this.carousel.style.gap = '20px';
+                this.carousel.style.transition = 'none';
+                this.carousel.style.willChange = 'transform';
+                
+                // Crear indicadores (solo para las cards originales)
+                this.createIndicators();
+                
+                // Ocultar botones de navegación manual para loop infinito
+                if (this.prevBtn) this.prevBtn.style.display = 'none';
+                if (this.nextBtn) this.nextBtn.style.display = 'none';
+            }
+
+            createIndicators() {
+                if (!this.indicators) return;
+                
+                this.indicators.innerHTML = '';
+                
+                // Crear indicadores circulares basados en grupos de cards
+                const totalGroups = Math.ceil(this.cards.length / this.cardsPerView);
+                
+                for (let i = 0; i < totalGroups; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'carousel-dot';
+                    dot.addEventListener('click', () => this.jumpToGroup(i));
+                    this.indicators.appendChild(dot);
+                }
+                
+                this.updateIndicators();
+            }
+
+            updateCarouselPosition(smooth = true) {
+                if (smooth) {
+                    this.carousel.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                } else {
+                    this.carousel.style.transition = 'none';
+                }
+                
+                this.carousel.style.transform = `translateX(-${this.scrollPosition}px)`;
+            }
+
+            updateIndicators() {
+                if (!this.indicators) return;
+                
+                const dots = this.indicators.querySelectorAll('.carousel-dot');
+                if (dots.length === 0) return;
+                
+                // Calcular posición normalizada dentro del ciclo original (sin clones)
+                const cycleLength = this.cards.length * this.cardWidth;
+                const normalizedPosition = this.scrollPosition % cycleLength;
+                
+                // Calcular qué grupo de cards está más visible
+                const groupWidth = this.cardsPerView * this.cardWidth;
+                const currentGroupFloat = normalizedPosition / groupWidth;
+                const currentGroup = Math.round(currentGroupFloat) % dots.length;
+                
+                // Activar el indicador correspondiente con transición suave
+                dots.forEach((dot, index) => {
+                    if (index === currentGroup) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            jumpToGroup(groupIndex) {
+                // Saltar a un grupo específico de cards
+                const groupWidth = this.cardsPerView * this.cardWidth;
+                const targetPosition = groupIndex * groupWidth + this.cards.length * this.cardWidth;
+                this.scrollPosition = targetPosition;
+                this.updateCarouselPosition(true);
+                this.updateIndicators();
+            }
+
+            handleInfiniteLoop() {
+                const maxPosition = this.cards.length * 2 * this.cardWidth;
+                const minPosition = 0;
+                
+                if (this.scrollPosition >= maxPosition) {
+                    this.scrollPosition -= this.cards.length * this.cardWidth;
+                    this.updateCarouselPosition(false);
+                } else if (this.scrollPosition <= minPosition) {
+                    this.scrollPosition += this.cards.length * this.cardWidth;
+                    this.updateCarouselPosition(false);
+                }
+            }
+
+            startAutoScroll() {
+                const animate = () => {
+                    // SIEMPRE se mueve, sin condiciones de pausa
+                    this.scrollPosition += this.autoScrollSpeed;
+                    this.handleInfiniteLoop();
+                    this.updateCarouselPosition(false);
+                    this.updateIndicators();
+                    
+                    this.animationFrame = requestAnimationFrame(animate);
+                };
+                
+                this.animationFrame = requestAnimationFrame(animate);
+            }
+
+            bindEvents() {
+                // Touch support para móvil - SIN pausar el auto-scroll
+                let touchStartX = 0;
+                let touchEndX = 0;
+                let isDragging = false;
+
+                this.carousel.addEventListener('touchstart', (e) => {
+                    touchStartX = e.touches[0].clientX;
+                    isDragging = true;
+                    // NO pausamos el auto-scroll, sigue girando
+                }, { passive: true });
+
+                this.carousel.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    
+                    touchEndX = e.touches[0].clientX;
+                    const diff = touchStartX - touchEndX;
+                    
+                    // Scroll responsivo al touch ADEMÁS del auto-scroll
+                    this.scrollPosition += diff * 0.3;
+                    touchStartX = touchEndX;
+                    
+                    this.handleInfiniteLoop();
+                    this.updateCarouselPosition(false);
+                    this.updateIndicators();
+                }, { passive: true });
+
+                this.carousel.addEventListener('touchend', () => {
+                    isDragging = false;
+                    // NO reiniciamos auto-scroll, simplemente continúa
+                }, { passive: true });
+
+                // Responsive
+                window.addEventListener('resize', () => {
+                    this.handleResize();
+                });
+                
+                this.handleResize(); // Initial call
+            }
+
+            handleResize() {
+                const width = window.innerWidth;
+                
+                if (width < 768) {
+                    this.cardsPerView = 1;
+                    this.cardWidth = Math.min(280, width - 40);
+                    this.autoScrollSpeed = 0.3; // Muy suave en móvil
+                } else if (width < 1024) {
+                    this.cardsPerView = 2;
+                    this.cardWidth = 300;
+                    this.autoScrollSpeed = 0.4; // Suave en tablet
+                } else if (width < 1400) {
+                    this.cardsPerView = 3;
+                    this.cardWidth = 300;
+                    this.autoScrollSpeed = 0.5; // Refinado en desktop
+                } else {
+                    this.cardsPerView = 4;
+                    this.cardWidth = 300;
+                    this.autoScrollSpeed = 0.5; // Refinado en desktop grande
+                }
+                
+                // Reajustar posición después del resize
+                this.scrollPosition = Math.max(this.scrollPosition, this.cards.length * this.cardWidth);
+                this.createIndicators();
+                this.updateCarouselPosition(false);
+            }
+        }
+
+        // Initialize Skills Carousel when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new SkillsCarousel();
+        });
+
+        // Funcionalidad de Filtros de Certificados
+        function initCertificateFilters() {
+            const filterButtons = document.querySelectorAll('.certificate-filters .filter-btn');
+            const categories = document.querySelectorAll('.certificates .certificate__category');
+
+            // Función para asegurar que los proyectos siempre estén visibles
+            function ensureProjectsVisible() {
+                const projectsSection = document.querySelector('.projects');
+                const projectsGrid = document.querySelector('.projects .projects__grid');
+                const projectCards = document.querySelectorAll('.projects .project__card');
+                
+                if (projectsSection) {
+                    projectsSection.style.display = 'block';
+                    projectsSection.style.visibility = 'visible';
+                    projectsSection.style.opacity = '1';
+                }
+                
+                if (projectsGrid) {
+                    projectsGrid.style.display = 'grid';
+                    projectsGrid.style.visibility = 'visible';
+                    projectsGrid.style.opacity = '1';
+                }
+                
+                projectCards.forEach(card => {
+                    card.style.display = 'block';
+                    card.style.visibility = 'visible';
+                    card.style.opacity = '1';
+                });
+            }
+
+            // Función para mostrar/ocultar categorías
+            function filterCategories(filterType) {
+                categories.forEach(category => {
+                    if (filterType === 'all') {
+                        category.classList.remove('hidden');
+                        category.classList.add('show');
+                    } else {
+                        const categoryType = category.getAttribute('data-category');
+                        if (categoryType === filterType) {
+                            category.classList.remove('hidden');
+                            category.classList.add('show');
+                        } else {
+                            category.classList.remove('show');
+                            category.classList.add('hidden');
+                        }
+                    }
+                });
+                
+                // Asegurar que los proyectos permanezcan visibles después del filtrado
+                setTimeout(ensureProjectsVisible, 50);
+            }
+
+            // Event listeners para botones de filtro
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remover clase active de todos los botones de certificados
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Agregar clase active al botón clickeado
+                    button.classList.add('active');
+                    
+                    // Obtener el filtro del data-filter
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Aplicar filtro
+                    filterCategories(filter);
+                });
+            });
+
+            // Activar "Todos" por defecto
+            const allButton = document.querySelector('.certificate-filters [data-filter="all"]');
+            if (allButton) {
+                allButton.classList.add('active');
+            }
+        }
+
+        // Inicializar filtros cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            initCertificateFilters();
+            initProjectFilters(); // Agregar inicialización de filtros de proyectos
+        });
+
+        // Funcionalidad de Filtros de Proyectos - VERSIÓN CORREGIDA
+        function initProjectFilters() {
+            // Buscar elementos
+            const filterButtons = document.querySelectorAll('.project-filters .filter-btn');
+            const projectCards = document.querySelectorAll('.project__card');
+            const loadMoreBtn = document.querySelector('.load-more-btn');
+            
+            // Verificar que existen los elementos
+            if (filterButtons.length === 0 || projectCards.length === 0) {
+                console.log('❌ No se encontraron filtros o proyectos');
+                return;
+            }
+            
+            console.log('✅ Filtros encontrados:', filterButtons.length);
+            console.log('✅ Proyectos encontrados:', projectCards.length);
+            
+            let currentFilter = 'all';
+            
+            // Función para filtrar proyectos CON !IMPORTANT
+            function filterProjects(category) {
+                console.log('🔍 Filtrando por:', category);
+                
+                let visibleCount = 0;
+                let categoryCount = 0;
+                
+                projectCards.forEach((card, index) => {
+                    const cardCategory = card.getAttribute('data-category');
+                    
+                    if (category === 'all' || cardCategory === category) {
+                        // PROYECTO COINCIDE CON FILTRO
+                        categoryCount++;
+                        card.classList.remove('hidden');
+                        
+                        // Solo mostrar los primeros 6 del filtro
+                        if (visibleCount < 6) {
+                            card.style.setProperty('display', 'block', 'important');
+                            card.style.setProperty('visibility', 'visible', 'important');
+                            card.style.setProperty('opacity', '1', 'important');
+                            visibleCount++;
+                            console.log(`✅ Mostrando: ${card.querySelector('.project__title')?.textContent || 'Sin título'}`);
+                        } else {
+                            card.style.setProperty('display', 'none', 'important');
+                            console.log(`⏸️ Oculto (más de 6): ${card.querySelector('.project__title')?.textContent || 'Sin título'}`);
+                        }
+                    } else {
+                        // PROYECTO NO COINCIDE CON FILTRO
+                        card.style.setProperty('display', 'none', 'important');
+                        card.style.setProperty('visibility', 'hidden', 'important');
+                        card.style.setProperty('opacity', '0', 'important');
+                        card.classList.add('hidden');
+                        console.log(`❌ Ocultando: ${card.querySelector('.project__title')?.textContent || 'Sin título'}`);
+                    }
+                });
+                
+                console.log(`📊 Resultados para "${category}": ${visibleCount} visibles de ${categoryCount} total`);
+                
+                // Actualizar botón "Ver más"
+                updateLoadMoreButton();
+            }
+            
+            // Función para actualizar botón "Ver más"
+            function updateLoadMoreButton() {
+                if (!loadMoreBtn) return;
+                
+                const hiddenProjects = Array.from(projectCards).filter(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    const matchesFilter = currentFilter === 'all' || cardCategory === currentFilter;
+                    const isDisplayNone = getComputedStyle(card).display === 'none';
+                    const notHiddenByFilter = !card.classList.contains('hidden');
+                    return matchesFilter && isDisplayNone && notHiddenByFilter;
+                });
+                
+                if (hiddenProjects.length > 0) {
+                    loadMoreBtn.style.setProperty('display', 'flex', 'important');
+                    console.log(`👁️ Botón "Ver más" visible (${hiddenProjects.length} proyectos ocultos)`);
+                } else {
+                    loadMoreBtn.style.setProperty('display', 'none', 'important');
+                    console.log('🙈 Botón "Ver más" oculto');
+                }
+            }
+            
+            // Agregar eventos a los botones de filtro
+            filterButtons.forEach((btn, index) => {
+                const filterValue = btn.getAttribute('data-filter');
+                console.log(`🎯 Configurando filtro ${index + 1}: "${filterValue}"`);
+                
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log(`🖱️ CLICK en filtro: "${filterValue}"`);
+                    
+                    // Remover clase active de todos los botones
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    
+                    // Agregar clase active al botón clickeado
+                    btn.classList.add('active');
+                    
+                    // Aplicar filtro
+                    currentFilter = filterValue;
+                    filterProjects(currentFilter);
+                });
+            });
+            
+            // Agregar evento al botón "Ver más"
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('🖱️ CLICK en "Ver más"');
+                    
+                    const hiddenProjects = Array.from(projectCards).filter(card => {
+                        const cardCategory = card.getAttribute('data-category');
+                        const matchesFilter = currentFilter === 'all' || cardCategory === currentFilter;
+                        const isDisplayNone = getComputedStyle(card).display === 'none';
+                        const notHiddenByFilter = !card.classList.contains('hidden');
+                        return matchesFilter && isDisplayNone && notHiddenByFilter;
+                    });
+                    
+                    console.log(`📈 Mostrando ${Math.min(6, hiddenProjects.length)} proyectos adicionales`);
+                    
+                    // Mostrar los siguientes 6
+                    hiddenProjects.slice(0, 6).forEach(card => {
+                        card.style.setProperty('display', 'block', 'important');
+                        card.style.setProperty('visibility', 'visible', 'important');
+                        card.style.setProperty('opacity', '1', 'important');
+                        console.log(`✨ Mostrando: ${card.querySelector('.project__title')?.textContent || 'Sin título'}`);
+                    });
+                    
+                    updateLoadMoreButton();
+                });
+            }
+            
+            // Configuración inicial
+            console.log('🔧 Configurando estado inicial...');
+            
+            // Ocultar proyectos después del 6to
+            projectCards.forEach((card, index) => {
+                if (index >= 6) {
+                    card.style.setProperty('display', 'none', 'important');
+                    console.log(`⏸️ Ocultando proyecto inicial ${index + 1}: ${card.querySelector('.project__title')?.textContent || 'Sin título'}`);
+                } else {
+                    card.style.setProperty('display', 'block', 'important');
+                    card.style.setProperty('visibility', 'visible', 'important');
+                    card.style.setProperty('opacity', '1', 'important');
+                }
+            });
+            
+            // Activar filtro "Todos" por defecto
+            const allButton = document.querySelector('.project-filters [data-filter="all"]');
+            if (allButton) {
+                allButton.classList.add('active');
+                console.log('✅ Filtro "Todos" activado por defecto');
+            }
+            
+            updateLoadMoreButton();
+            
+            console.log('🎉 Filtros de proyectos inicializados correctamente');
+        }
+
+        // Funcionalidad del Timeline Interactivo
+        function togglePhase(phaseNumber) {
+            const details = document.getElementById(`phase-${phaseNumber}-details`);
+            const toggleIcon = document.querySelector(`[data-phase="${phaseNumber}"] .timeline-toggle`);
+            const timelineItem = document.querySelector(`[data-phase="${phaseNumber}"]`);
+            
+            if (details && toggleIcon && timelineItem) {
+                const isExpanded = details.classList.contains('expanded');
+                
+                if (isExpanded) {
+                    // Colapsar
+                    details.classList.remove('expanded');
+                    toggleIcon.classList.remove('rotated');
+                    timelineItem.classList.remove('active');
+                } else {
+                    // Expandir
+                    details.classList.add('expanded');
+                    toggleIcon.classList.add('rotated');
+                    timelineItem.classList.add('active');
+                    
+                    // Smooth scroll hacia el elemento
+                    setTimeout(() => {
+                        details.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'nearest'
+                        });
+                    }, 300);
+                }
+            }
+        }
+
+        // Animación de las estadísticas del proceso
+        function animateProcessStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const processSection = document.querySelector('.workflow-timeline');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        statNumbers.forEach((stat, index) => {
+                            const finalText = stat.textContent;
+                            const hasPercent = finalText.includes('%');
+                            const hasPlus = finalText.includes('+');
+                            const hasRange = finalText.includes('-');
+                            
+                            let finalNumber = 0;
+                            if (hasPercent) {
+                                finalNumber = parseInt(finalText.replace('%', ''));
+                            } else if (hasPlus) {
+                                finalNumber = parseInt(finalText.replace('+', ''));
+                            } else if (hasRange) {
+                                finalNumber = parseInt(finalText.split('-')[1]);
+                            } else {
+                                finalNumber = parseInt(finalText);
+                            }
+                            
+                            // Animar el número
+                            let currentNumber = 0;
+                            const increment = finalNumber / 50; // 50 pasos de animación
+                            
+                            const timer = setInterval(() => {
+                                currentNumber += increment;
+                                if (currentNumber >= finalNumber) {
+                                    currentNumber = finalNumber;
+                                    clearInterval(timer);
+                                }
+                                
+                                let displayText = Math.floor(currentNumber).toString();
+                                if (hasPercent) {
+                                    displayText += '%';
+                                } else if (hasPlus) {
+                                    displayText += '+';
+                                } else if (hasRange) {
+                                    displayText = `6-${Math.floor(currentNumber)}`;
+                                }
+                                
+                                stat.textContent = displayText;
+                            }, 50);
+                        });
+                        
+                        observer.unobserve(processSection);
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            if (processSection) {
+                observer.observe(processSection);
+            }
+        }
+
+        // Inicializar animaciones del timeline
+        document.addEventListener('DOMContentLoaded', () => {
+            animateProcessStats();
+            
+            // Agregar animación de entrada a los elementos del timeline
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            timelineItems.forEach(item => {
+                timelineObserver.observe(item);
+            });
+        });
     </script>
 
     <!-- Proactive Assistant Message -->
@@ -2002,4 +4770,4 @@
         </div>
     </div>
 </body>
-</html> 
+</html>
